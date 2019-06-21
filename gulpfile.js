@@ -11,10 +11,14 @@ const babel = require("gulp-babel");               //ES6  转  ES5
 gulp.task('hello',function(){                       //复制文件
     gulp.src('*.html').pipe(gulp.dest('dist')).pipe(connect.reload());
 })
+gulp.task('img',function(){                       //复制文件
+    gulp.src('img/**').pipe(gulp.dest('dist/img'));
+})
 gulp.task('watch',function(){                       //监控文件状态
     gulp.watch('*.html',['hello']);
     gulp.watch('*.scss',['copyCss'])
     gulp.watch('*.css',['zipCss'])
+    gulp.watch("img/**",['img'])
 })
 
 gulp.task('copyCss',function(){                    //转换scss文件
@@ -47,4 +51,4 @@ gulp.task('server',function(){            //开启服务器
 })
 
 gulp.task("default",["server","watch"]);           //设置默认事件  直接用gulp 打开
-gulp.task('bulid',['hello','copyCss','zipCss']);    //开启
+gulp.task('bulid',['hello','copyCss','zipCss',"img"]);    //开启

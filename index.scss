@@ -1,0 +1,103 @@
+body,ol,ul,h1,h2,h3,h4,h5,h6,p,dl,dd,form,fieldset,legend,input,textarea,select,figure{margin:0;padding:0}
+a{text-decoration:none}
+a:hover{color:#f194cf; -webkit-tap-highlight-color:rgba(255,0,0,0);}
+em{font-style:normal}
+li{list-style:none}
+img{vertical-align:middle}
+$navh:28px;
+$navw:1170px;
+$navbg:#f5f5f5;
+$margi:0 auto;
+$wt:10px;
+$navcolor:#777;
+body{
+    font-size: 12px;
+}
+.vip-nav{
+    width: 100%;
+    height:$navh;
+    background: #f5f5f5;
+    .vip-nav-city{
+        width:$navw;
+        height: $navh;
+        margin:$margi;
+        line-height: $navh;
+        .city{
+            float: left
+        }
+        .city-arrows{
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width:$wt/2;
+            margin: $wt+2 0 0 4px;
+            border-color: $navcolor transparent transparent transparent;
+            float: left;
+        }
+    }
+    .nav-navbar{
+        float: right;
+        text-align: center;
+        li{
+            width: 92px;
+            float: left;
+            position: relative;
+            box-sizing: border-box;
+            border: 1px solid transparent;
+            ul{
+                float: none;
+                background: #fff;
+                display: none;
+                li{
+                    float: none;
+                    text-align: center
+                }
+            }
+        a{
+                color: $navcolor;
+                span{
+                    display: inline-block;
+                    width: 0;
+                    height: 0;
+                    border-style: solid;
+                    border-width:4px;
+                    position: absolute;
+                    right:5px;
+                    top: 12px;
+                    border-color: $navcolor transparent transparent transparent;
+                }
+            &:hover{
+                color: #f194cf;
+                span{
+                    top: 7px;
+                    border-color:  transparent transparent #f194cf transparent;
+                }
+                }
+            }
+        }
+    }
+}
+.nav-navbar>li:nth-child(3){
+    padding-left: $wt/2;
+        background: url(../img/header_sign-hash-0459d02c.gif) no-repeat;
+        background-position: $wt/2 $wt/2;
+        background-size: $wt+2;
+    }
+.nav-navbar>li{
+    &:nth-child(1),&:nth-child(4),&:nth-child(2),&:nth-child(8),&:nth-child(9){
+        width: 70px;
+    }
+    &:nth-child(3){
+        width: 82px
+    }
+    &:nth-child(5),&:nth-child(7),&:nth-child(6){
+        &:hover{
+            background: #fff;
+            border-color: #ccc;
+            border-top: none;
+            &>ul{
+                display: block;
+            }
+        }
+    }
+}
