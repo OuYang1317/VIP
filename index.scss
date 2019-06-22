@@ -380,22 +380,33 @@ body{
                    }
                }
             &:last-child{
+                position: relative;
+                z-index: 100; 
                 .niv{
                     width: 100%;
                     height: 100%;
                     box-shadow: 0px -1px 1px 0px #ccc;
                 }
                 ul{
+                    position: absolute;
+                    top: 43px;
+                    z-index: 100;
                     background: #fff;
-                    display: none;
-                }
-                a{
-                    width: 100%;
-                    height: 100%;
-                    }
-                li{
-                    float: none;
+                    display: none;   //更多
+                    width: 70px;
                     text-align: center;
+                    a{
+                        display: inline-block;
+                        width: 100%;
+                        height: 100%;
+                        padding: 0;
+                        margin: 0;
+                        text-align: center;
+                        }
+                    li{
+                        float: none;
+                        text-align: center;
+                    }
                 }
             }
         }
@@ -425,7 +436,7 @@ body{
                  font-size: 14px;
                  top: 43px;
                  left: 0;
-                 display: none;
+                 display: none;  //菜单
                  a:hover{
                     background: #fff;
                     color: #F10180;
@@ -445,7 +456,8 @@ body{
                 top:43px;
                 left:176px;
                 z-index: 20;
-                display: none;
+                background: #fff;
+                 display: none; //二级菜单
                 .nav-menuol{
                     width: 725px;
                     height: 100%;
@@ -456,7 +468,7 @@ body{
                         border-bottom: 1px solid #000;
                         margin-left: 10px;
                         &:last-child{
-                            border: none;
+                        border: none;
                         }
                         dt{
                             float: left;
@@ -495,8 +507,104 @@ body{
 .selector{ 
     width: 100%;
     height: 1000px; 
-    background: url(img/15609498969318.jpg) no-repeat center;
+    padding-top: 45px;
+    background: url(../img/15609498969318.jpg) no-repeat center top;
+    .banner{
+        width: 1146px;
+        margin: 0 auto;
+        background: #FFFEFE;
+        height: 430px;
+        padding: 12px;
+        box-shadow: 1px 1px 0px 0px #eee;
+        position: relative;
+        img{
+            width: 1146px;
+        }
+        >ul{
+            margin: 0 auto;
+            >li{
+                position: absolute
+            }
+        }
+        .bannernav{
+            position: absolute;
+            bottom: 0; 
+            left: 50%;
+            transform: translateX(-50%);
+            >p{
+                width: 229px;
+                height: 40px;
+               display: inline-block; 
+               text-align: center;
+               &:first-child{
+                   border-bottom: 3px solid #F10180;
+               }
+               span{
+                   display: inline-block;
+                   width: 100%;
+                   height:12px;
+                   border-left: 1px solid #ccc;
+                   margin-top: 10px;
+               }
+               .one{
+                   border: none; 
+               }
+            }
+        }
+        .noe{
+            width: 1146px;
+            height: 400px;
+            position: relative;
+            overflow: hidden;
+            >span{
+                position: absolute;
+                width: 30px;
+                height: 50px;
+                color: #fff;
+                background: #000;
+                opacity: .3;
+                line-height: 50px;
+                text-align: center
+
+            }
+            .zuo{
+                top: 50%;
+                left: 0px;
+                margin-top:-25px;
+               
+            }
+            .you{
+                top: 50%;
+                right: 0px;
+                margin-top:-25px;
+            }
+        }
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 .rightitem{
