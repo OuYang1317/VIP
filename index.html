@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="font_kmche1qr528/iconfont.css">
     <script src="https://cdn.bootcss.com/jquery/1.11.1/jquery.js"></script>
-    <script src="js/vip.js"></script>
+    <script src="js/vip.js" type="text/javascript" charset="utf-8"></script>
 </head>
 <body>
     <!-- 头部导航开始 -->
@@ -133,10 +133,10 @@
         </div>
     </div>
 <!-- 菜单二级页面 -->
-<div class="nav-navbarii">
+<div class="nav-navbarii" id="navnavnav">
     <div class="nav-navbaritem">
         <ul class="nav-navbaritemul">
-            <li class="menu"><a href="#"><b>三</b><i>商品分类</i></a>
+            <li class="menu" id="menuitem"><a href="#"><b>三</b><i>商品分类</i></a>
             <ul>
                 <li><a href="#">女装/男装/内衣</a></li>
                 <li><a href="#">女鞋/男鞋/箱包</a></li>
@@ -175,7 +175,7 @@
             </ul>
             </li>
         </ul>
-             <div class="nav-menu">
+             <div class="nav-menu" id="navnav_menu">
             <div class="nav-menuol" >
                 <dl>
                     <dt>
@@ -349,12 +349,16 @@
 <!-- 内容区域开始 -->
 <div class="selector">
 <!-- banner开始 -->
-<div class="banner">
+<div class="banner" id="bannerimg">
     <ul>
-        <li><img src="img/1.jpg"></li>
+    	<li><img src="img/15611127004422.jpg"/></li>
         <li><img src="img/2.jpg"></li>
     </ul>
-    <div class="bannernav"><p><span  class="one">HelloKitty品牌特卖日 3折封顶</span></p><p><span>百丽集团品牌特卖日</span></p></div>
+    <div class="bannernav" id="iremwen">
+    	<p><span class="one">大牌护肤品牌钜献 至高买1享10</span></p>
+    	<p><span>HelloKitty品牌特卖日 3折封顶</span></p>
+    </div>
+     <div id="tiao"></div>
     <div class="noe">
     <span class="iconfont icon-jiantouyou zuo"></span>
     <span class="iconfont icon-jiantouyou1 you"></span>
@@ -1394,10 +1398,10 @@
         <li><div>我的优惠券</div><span class="iconfont icon-youhui"></span></li>
         <li><div>品牌收藏</div><span class="iconfont icon-xin"></span></li>
         <li><div>商品收藏</div><span class="iconfont icon-xingxing"></span></li>
-        <li><div>我的足迹</div><span class="iconfont icon-zuji"></span></li>
-        <li><div>会员反馈</div><span class="iconfont icon-qianbi"></span></li>
+        <li><div>我的足迹</div><span class="iconfont icon-zuji"></span></li> 
+        <li><div>会员反馈</div><span class="iconfont icon-qianbi"></span></li>   
         <li id="top"><div>回到顶部</div><span class="iconfont icon-chevron-copy-copy-copy-copy-copy-copy"></span></li>
-    </ul>
+    </ul>  
 </div>
 </body>
 <script>
