@@ -38,7 +38,199 @@ nav{
     .yemian{
         margin-top: 50px;
         width: 360px;
-        height: 365px;
+        height: 435px;
         background: #fff;
+        border-radius: 4px;
+        .denglu{
+            height: 395px;
+            width: 321px;
+            padding: 20px;
+            overflow: hidden;
+            .weixin{
+                width: 100%;
+                height: 40px;
+                display: flex;
+                justify-content: space-around;
+                margin-top: 30px;
+                p{
+                    width: 40%;
+                    height: 20px;
+                    border-bottom: 1px solid #ccc;
+                }
+                span{
+                    font-size: 40px;
+                    color:#71BE47;
+                }
+            }
+         
+            >h1{
+                width: 100%;
+                text-align: center;
+                font-size: 20px;
+                color: #666666;
+                border-bottom: 1px solid #ccc;
+                >p{
+                    display: inline-block;
+                    margin: 0 30px;
+                    cursor: pointer; 
+                    margin-bottom: 15px;
+                }
+                >span{
+                    font-weight: 300;
+                }
+            }
+            #saoma{
+                width:100%;
+                height: 192px;
+                margin: 0 auto;
+                margin-top: 50px;
+                background: #FFFEFE;
+               background-position: 110px -104px;
+               transition: background-position 0.5s;
+               //display: none;
+                div{    
+                    width:130px;
+                    height: 130px;
+                    padding: 10px;
+                    margin: 0 auto;
+                    border: 1px solid #ccc;
+                    position: relative;
+                    background: #fff;
+                    left: 0;
+                    transition: left 0.5s;
+                    img{
+                        width: 130px;
+                        height: 130px;
+                    }
+                }
+                &:hover{
+                     background: url(../img/sprites-hash-6954197b.png) no-repeat;
+                     background-position:173px -104px;
+                     div{
+                        left: -75px;
+                     }
+                 }
+                 p{
+                     width: 100%;
+                     background: #fff;
+                     text-align: center;
+                     margin-top:23px;
+                     font-size: 13px;
+                     font-weight: 500;
+                     a{
+                         color: #F10180;
+                     }
+                 }
+            }
+            #zhanghu{
+                width: 100%;
+                height: 192px;
+                margin-top: 50px;
+                display: none;
+                .uresname,.pasd{
+                    width: 290px;
+                    height: 46px;
+                    margin:10px auto;
+                    border: 1px solid #ccc;
+                    border-radius: 5px;
+                    line-height: 46px;
+                    padding-left: 10px;
+                    >input{
+                        width: 235px;
+                        height: 46px;
+                        border: none;
+                        background: none;
+                        outline: none;
+                        padding-left: 20px;
+                        line-height: 44px;
+                        font-size: 18px;
+                        float: left;
+                    }
+                    span{
+                        font-size: 25px;
+                        color: #ccc;
+                        float: left;
+                    }
+
+                }
+                .chec{
+                    margin-top: 30px;
+                    display: flex;
+                    justify-content:space-between;
+                    align-content: center;
+                    margin-bottom: 10px; 
+                    padding: 0 10px;
+                    height: 30px;
+                    line-height: 30px;
+                    h3{
+                        font-size: 13px;
+                        font-weight: 400;
+                        span{
+                            float: left;
+                            width: 20px;height: 16px;
+                            background: url(../img/sprite.png) no-repeat;
+                            background-position: -24px 0px;
+                            margin-top: 8px;
+                            margin-right: 5px;
+                        }
+                    }
+                    p{
+                        font-size: 10px;
+                    }
+                   
+                }
+                #btn{
+                    width:100%;
+                    height: 40px;
+                    background: #F10180;
+                    font-size: 16px;
+                    border:none;
+                    color: #fff;
+                }
+        }
+        .denglufangshi{
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            margin-top: 33px;
+            line-height: 20px;
+            >ul{
+                li{
+                    font-size: 12px;
+                    float: left;
+                    margin-right: 10px;
+                    span{
+                        margin-left: 10px;
+                    }
+                }
+           }
+           >h4{
+                font-size: 12px;
+                font-weight: 400;
+                color:#ccc;
+           }
+           >h3{
+            font-size: 14px;
+            font-weight: 400;
+        }
+        }
+    }
+}
+} 
+.dian2{
+    display: none;
+}
+.gengduoduo{
+    width: 100%;
+    height: 40px;
+    padding:0 13px;
+    font-size: 13px;
+    li{
+        float: left;
+        margin-right: 10px;
+        margin-top: 4px;
+        span{
+            margin-left: 10px;
+        }
     }
 }
