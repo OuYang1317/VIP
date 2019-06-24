@@ -281,7 +281,7 @@ body{
                     height: 34px; 
                     border: 1px solid #fc0387;
                     border-radius: 3px;
-                    overflow: hidden;
+                    position: relative;
                     input{
                         width:365px;
                         height: 34px;
@@ -302,6 +302,26 @@ body{
                             line-height: 34px;
                         }
                     }
+                    ul{
+                        width: 451px;
+                        height: 215px;
+                        position: absolute;
+                        z-index: 999;
+                        background: #fff;
+                        top: 35px;
+                        left: -1px;
+                        border:1px solid #CCCCCC;
+                        display: none;
+                        li{
+                            margin:5px 0;
+                            padding-left: 15px;
+                            &:hover{
+                                background:#F10180;
+                                color: #fff;
+                                cursor: pointer;
+                            }
+                        }
+                    }
             }
             .serach-log{
                 width: 100%;
@@ -309,7 +329,7 @@ body{
                 border: 1px solid #ccc;
                 padding-top: 10px;
                 position: relative;
-                z-index: 20;
+                z-index:145;
                 background: #fff;
                 display: none;
                 .serach-item{
@@ -447,13 +467,14 @@ body{
                     width: 100%;
                     height: 100%;
                     box-shadow: 0px -1px 1px 0px #ccc;
+                    
                 }
                 ul{
                     position: absolute;
                     top: 43px;
                     z-index: 100;
                     background: #fff;
-                    display: none;   //���
+                    display: none;
                     width: 70px;
                     text-align: center;
                     a{
@@ -924,13 +945,14 @@ body{
 #louti{
     width: 76px;
     height: 440px;
-    position: absolute;
-    top: -40px;
-    left: 65px;
+    position: fixed;
+    top: 103px;
+    left: 35px;
     padding:0 2px;
     padding-top: 5px;
     border: 1px solid #ccc;
     border-radius: 6px;
+    display: none;
     >ul{
         >li{
             width: 70px;
@@ -1319,4 +1341,207 @@ footer{
    background: #F10180;
    bottom:0px;
    left: 355px;
+}
+#zhzhao{
+    width: 100%;
+    height:19739px;
+    position: absolute;
+    z-index: 998;
+    top: 0;
+    bottom: 0;
+    left:0;
+    background: rgba(19, 15, 64,0.5);
+    display:none;
+}
+.denglu{
+    height: 435px;
+    width: 360px;
+    background: #fff;
+    border: 4px solid #ccc;
+    position: absolute;
+    top: 120px;
+    left: 50%;
+    margin-left: -200px;
+    padding: 20px;
+    overflow: hidden;
+    >span{
+        display: inline-block;
+        width: 100%;
+        text-align: right;
+        font-size: 24px;
+        cursor: pointer;
+    }
+    >h1{
+        width: 100%;
+        text-align: center;
+        margin-top: 20px;
+        font-size: 20px;
+        color: #666666;
+        >p{
+            display: inline-block;
+            margin: 0 30px;
+            cursor: pointer; 
+        }
+        >span{
+            font-weight: 300;
+        }
+    }
+    #saoma{
+        width:100%;
+        height: 192px;
+        margin: 0 auto;
+        margin-top: 50px;
+        background: #FFFEFE;
+       //background: url(../img/sprites-hash-6954197b.png) no-repeat;
+       background-position: 111px,0px;
+       transition: all 0.5s;
+       display: none;
+        div{    
+            width:153px;
+            height: 153px;
+            padding: 10px;
+            margin: 0 auto;
+            border: 1px solid #ccc;
+            position: relative;
+            background: #fff;
+            left: 0;
+            transition: all 0.5s;
+        }
+        &:hover{
+             background: url(../img/sprites-hash-6954197b.png) no-repeat;
+             background-position:200px,0px;
+             background-size: 690px 400px;
+             div{
+                left: -75px;
+             }
+         }
+         p{
+             width: 100%;
+             text-align: center;
+             margin:20px 0;
+         }
+    }
+    #zhanghu{
+        width: 100%;
+        height: 280px;
+        margin-top: 50px;
+        .uresname,.pasd{
+            width: 290px;
+            height: 46px;
+            margin:10px auto;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            line-height: 46px;
+            padding-left: 10px;
+            //display: none;
+            input{
+                width: 235px;
+                height: 46px;
+                border: none;
+                background: none;
+                outline: none;
+                padding-left: 20px;
+                line-height: 44px;
+                font-size: 18px;
+                float: left;
+            }
+            span{
+                font-size: 25px;
+                color: #ccc;
+                float: left;
+            }
+        }
+        .chec{
+            margin-top: 30px;
+            display: flex;
+            justify-content:space-between;
+            align-content: center;
+            padding:0 35px;
+            margin-bottom: 10px; 
+            input{
+                width: 15px;height: 15px;
+            }
+        }
+        form>input{
+            width: 100%; 
+            height: 46px;
+            text-align: center;
+            border:none;
+            background:none; 
+            color: #fff;
+            background: #F10180; 
+            border-radius:5px;
+            line-height: 46px; 
+            outline: none;
+            margin-top: 10px;
+        }
+        .denglufangshi{
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            margin-top: 21px;
+            >ul{
+                li{
+                    float: left;
+                    margin-right: 10px;
+                    span{
+                        margin-left: 10px;
+                    }
+                }
+           }
+           >h4{
+                font-size: 14px;
+                font-weight: 400px;
+           }
+        }
+    }
+    .weixin{
+        width: 100%;
+        height: 40px;
+        display: flex;
+        justify-content: space-around;
+        margin-top: 10px;
+        p{
+            width: 40%;
+            height: 20px;
+            border-bottom: 1px solid #ccc;
+        }
+        span{
+            font-size: 40px;
+        }
+    }
+    .denglufangshi{
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        margin-top: 100px;
+        >ul{
+            li{
+                float: left;
+                margin-right: 10px;
+                span{
+                    margin-left: 10px;
+                }
+            }
+       }
+       >h4{
+            font-size: 14px;
+            font-weight: 400px;
+       }
+    }
+    >ul{
+        margin-top: 20px;
+        margin-left: 20px;
+        li{
+            float: left;
+            margin-right: 10px;
+            margin-top: 5px;
+            span{
+                margin-left: 10px;
+            }
+        }
+    }
+}
+.dian2{
+    display: none;
 }

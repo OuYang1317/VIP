@@ -23,7 +23,7 @@
             <div class="login">
                 <div class="touxiang">
                     <span class="iconfont icon-renwu"></span>
-                    <p><a href="#">你好  [请登录]</a></p>
+                    <p><a id="loginn1" href="#">你好  [请登录]</a></p>
                 </div>
                 <div class="qita">
                     <ul>
@@ -99,8 +99,17 @@
          <!-- 搜索框 -->
          <div class="serch-input">
              <div class="int">
-        <input type="text" placeholder="连衣裙">
+        <input id="seranns" type="text" placeholder="连衣裙">
         <a href=""><span class="iconfont icon-fangdajing"></span></a>  
+			<ul id = "serttt">
+				<li>asfa</li>
+				<li>asfa</li>
+				<li>asfa</li>
+				<li>asfa</li>
+				<li>asfa</li>
+				<li>asfa</li>
+				<li>asfa</li>
+			</ul>
         </div>
        
     <div class="serach-log">
@@ -138,10 +147,12 @@
         <ul class="nav-navbaritemul">
             <li class="menu" id="menuitem"><a href="#"><b>三</b><i>商品分类</i></a>
             <ul>
-                <li><a href="#">女装/男装/内衣</a></li>
+            	<div id="navnanbar">
+            	<li><a href="#">女装/男装/内衣</a></li>
                 <li><a href="#">女鞋/男鞋/箱包</a></li>
                 <li><a href="#">护肤彩妆/个护</a></li>
                 <li><a href="#">运动户外</a></li>
+            	</div>
                 <li><a href="#">家电数码</a></li>
                 <li><a href="#">母婴童装</a></li>
                 <li><a href="#">手表配饰</a></li>
@@ -177,7 +188,8 @@
         </ul>
              <div class="nav-menu" id="navnav_menu">
             <div class="nav-menuol" >
-                <dl>
+            	<div id="item123">
+            		<dl>
                     <dt>
                         <div><span>人气美衣</span><i>></i></div></dt>
                     <dd> 
@@ -226,7 +238,13 @@
                                 <a href="#">时尚套装</a>
                             </dd>
                     </dl>
+            	
+            	
+            	
+            	
                     <dl>
+            	
+            	    
                             <dt> <div><span>男上装</span><i>></i></div></dt>
                             <dd>
                                 <a href="#">短袖T恤</a>
@@ -338,7 +356,8 @@
                                 <a href="#">羊绒裙</a>
                             </dd>
                     </dl>
-            </div> 
+            </div>
+            	</div> 
             <a id="imga" href="#"><img src="img/15367386715465.png "></a>
              </div>
     </div>
@@ -467,9 +486,11 @@
 <div class="new_Pp">
     <div class="new_img"><img src="img/today_DDp.png " alt=""></div>
     <div class="timer"><img src="img/count_topfive.png" alt="">
+        <div class="timerr">
         <span>10</span>
         <span class="fen">10</span>
         <span class="miao">10</span>
+    </div>
     </div>
     <!-- 内容开始 -->
         <div class="new_item">
@@ -1276,7 +1297,7 @@
             <!-- 楼梯 -->
 <div id="louti">
         <ul>
-            <li><p class="hover"><span class="iconfont icon-xingxing"></span>精选</p></li>
+            <li><p><span class="iconfont icon-xingxing"></span>精选</p></li>
             <li><p><span class="iconfont icon-nvzhuang"></span>女装</p></li>
             <li><p><span class="iconfont icon-nanzhuang"></span>男装</p></li>
             <li><p><span class="iconfont icon-yundong"></span>运动</p></li>
@@ -1387,9 +1408,59 @@
 
 </footer>
 
-
-
-
+<!-- 弹窗 -->
+<div id="zhzhao">
+    <div class="denglu">
+        <span class="cloes">X</span>
+        <h1><p class="sam" >扫码登录</p><span>|</span><p class="zhd"style="color: #F10180">账号登录</p></h1>
+        <div id="saoma">
+            <div><img src="img/getQrImage.png"></div>
+            <p>打开<b>唯品会APP-个人中心</b>，扫一扫登录</p>
+        </div>
+        <div id="zhanghu">
+            <form  action="">
+                <div class="uresname">
+                    <span class="iconfont icon-renwu"></span><input type="text">
+                </div>
+                <div class="pasd">
+                    <span class="iconfont icon-suo"></span><input type="text">
+                </div>
+                <div class="chec"><h3><input type="checkbox" />记住密码</h3> <p><a href="#">忘记密码</a></p></div>
+                <input type="button" value="登录">
+            </form>
+            <div class="weixin"><p></p><span class="iconfont icon-weixin"></span><p></p></div>
+            <div class="denglufangshi"><ul>
+                    <li>新浪微博<span>|</span></li>
+                    <li>QQ<span>|</span></li>
+                    <li>支付宝</li>
+                    </ul>
+                    <h4 class="dian1">更多</h4>
+                    <h4 class="dian2">收起</h4>
+                    <h3><a href="#"></a>免费注册</h3>
+            </div>
+        </div>
+        
+        
+        <div class="denglufangshi"><ul>
+            <li>新浪微博<span>|</span></li>
+            <li>QQ<span>|</span></li>
+            <li>支付宝</li>
+            </ul>
+            <h4 class="dian1">更多</h4>
+            <h4 class="dian2">收起</h4>
+            <h3><a href="#"></a>免费注册</h3>
+    </div>
+    <ul>
+            <li>网易<span>|</span></li>
+            <li>人人网<span>|</span></li>
+            <li>建行登录<span>|</span></li>
+            <li>开心网<span>|</span></li>
+            <li>中国移动</li>
+            <li>翼支付</li>
+        </ul>
+    </div>
+    
+</div>
 <!-- 侧边栏 -->
 <div class="rightitem">
     <ul>
@@ -1403,13 +1474,5 @@
         <li id="top"><div>回到顶部</div><span class="iconfont icon-chevron-copy-copy-copy-copy-copy-copy"></span></li>
     </ul>  
 </div>
-</body>
-<script>
-$(function(){
-   $("#top").click(function(e){ 
-       e.preventDefault();
-       $("body","html").animate({scrollTop:'0px'},300);
-   });
-})
-</script>
+</body> 
 </html>
