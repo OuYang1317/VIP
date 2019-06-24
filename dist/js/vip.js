@@ -105,14 +105,14 @@ window.onload=function(){
 					$("#serttt").hide();
 					$(".serach-log").hide();
 				})
-				
+				//二级导航 接口
 			$.get("http://47.104.244.134:8080/goodstypelist.do",{l:1},function(data){
 				var str = "";
 				$.each(data, function(sum) {
 					str+=`<li data-id="${data[sum].id}" id ="${sum}"><a href="#">${data[sum].name}</a></li>`
 				});
 				$("#navnanbar").html(str);
-				var sb = $("#navnav_menu").html()
+				var sb = $("#item123").html()
 				$("#menuitem").find("li").mouseenter(function(){
 						var sl = $(this).attr("data-id")
 						var ss = $(this).attr("id")
@@ -171,7 +171,7 @@ window.onload=function(){
 				})
 			}
 		})
-			$('#louti li:not(:last)').click(function(){
+			$('#louti li').click(function(){
 				flag = false
 				var sr = 150;
 				var index = $(this).index();

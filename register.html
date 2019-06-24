@@ -8,6 +8,9 @@
     <link rel="stylesheet" href="css/register.css">
     <link rel="stylesheet" href="font_kmche1qr528/iconfont.css">
     <link rel="stylesheet" href="font_tq6utoxt14/iconfont.css">
+    <script src="https://cdn.bootcss.com/jquery/1.11.1/jquery.js"></script>
+    <script src="js/cookie.js"></script>
+    <script src="js/register.js"></script>
 </head>
 <body>
         <nav>
@@ -20,10 +23,29 @@
                 <div class="logog">
                     <div></div>
                     <div class="yemian">
-                           
-                            
+                        <div class="headerr">
+                          <h1><span>会员注册</span><p>已注册可<a href="#">直接登录</a></p></h1>
+                            </div>
+                            <div class="inputt">
+                                <div class="uresename"><span class="iconfont icon-shouji"></span><input type="text"><i class="iconfont "></i></div>
+                                <p>请输入正确的手机号码</p>
+                                <div class="yanzheng"><input type="text"><i class="iconfont "></i></div><canvas id="yzhan"></canvas>
+                                <p>验证码错误</p>
+                                <div class="pasd"><span class="iconfont icon-suo"></span><input type="text"><i class="iconfont "></i></div>  
+                                <div class="qingruo"><h3><p></p></h3><b>中</b></div><p>密码中包含非法字符</p>
+                                <div class="yanzhengpsd"><span class="iconfont icon-suo"></span><input type="text"><i class="iconfont"></i></div>
+                                <p>两次输入的密码不一致，请重试</p>
+                                <div class="xieyi">
+                                <h3><span></span><b>我已阅读并接受以下条款：<a herf="#">《唯品会服务条款》《隐私条款》《唯品支付用户服务协议</a></b></h3>
+                                </div>
+                                <p>接受服务条款才能注册</p>
+                                <button type="button" id="zhuce">立即注册</button>
+                            </div>
                     </div>
                 </div>
+            </div>
+            <div class="footer">
+                Copyright 2008-2019 vip.com，All Rights Reserved ICP证：粤 B2-20080329
             </div>
 </body>
 </html>

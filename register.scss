@@ -38,8 +38,180 @@ nav{
     .yemian{
         margin-top: 50px;
         width: 360px;
-        height: 487px;
+        height:525px;
         background: #fff;
-        border-radius: 4px;
+        .headerr{
+            width: 320px;
+            height: 51px;
+            border-bottom: 1px solid #ccc;
+            line-height: 51px;
+            padding:0 20px;
+            h1{
+                font-size: 14px;
+                display: flex;
+                justify-content: space-between;
+                span{
+                    font-size: 20px;
+                    color: #666;
+                }
+                p{
+                    font-weight: 400;
+                    font-size: 14px;
+                    a{
+                        color: #F10180;
+                    }
+                }
+            }
+        }
+        .inputt{
+            width: 100%;
+            height: 400px;
+            div{
+                width:300px;
+                height: 47px;
+                margin: 5px auto;
+                border: 1px solid #ccc;
+                border-radius: 3px;
+                background: #E8F0FE;
+
+                span{
+                    float: left;
+                    font-size: 22px;
+                    margin-left: 10px;
+                    margin-top: 10px;
+                    color: #ccc;
+                }
+                input{ 
+                    float: left;
+                    width:225px;
+                    height: 47px;
+                    border: none;
+                    outline: none;
+                    padding-left: 10px;
+                    font-weight: 500;
+                    background: none;
+                }
+                i{
+                    float: left;
+                    font-size: 22px;
+                    font-weight: 600;
+                    color: #47B85C;
+                    width: 28px;
+                    height: 37px;
+                    background: #fff;
+                    padding-top: 10px;
+                    padding-left: 5px;  
+                }
+            }
+            .yanzheng{
+                width: 170px;
+                height: 47px;
+                margin-left: 29px;
+                display: inline-block;
+                >input{
+                    width:117px;
+                    height: 47px;
+                    padding-left: 20px;
+                }
+            }
+            canvas{
+                    width: 105px;
+                    height: 47px;
+                    float: right;
+                    margin-right: 42px;
+                    margin-top:5px;
+                    border-radius: 3px;
+                    border: 1px solid #ccc;
+                }
+            .qingruo{
+                width: 52px;
+                height: 15px; 
+                margin:0;
+                margin-left: 30px;
+                display: inline-block;
+                line-height: 15px;
+                text-align: right;
+                background: none;
+                border: none;
+                b{
+                    font-size: 12px;
+                    font-weight: 300;
+                    line-height: 15px;
+                }
+                h3{
+                    width: 36px;
+                    height: 10px;
+                    float: left;
+                    margin-top: 4px;
+                    background: #E0E0E0;
+                    &>p{
+                        width: 24px;
+                        height: 10px;
+                        background: #F9A123;
+                        margin: 0;
+                        float: left;
+                        opacity: 1;
+                    }
+                }
+                
+            }
+                p{
+                    margin-left: 30px;
+                    font-size: 13px;
+                    color: red;
+                    opacity: 0;
+                }
+                .uresename{
+                    margin-top: 13px;
+                }
+
+            .xieyi{
+                background: none;
+                border:none;
+                height: 30px;
+                >h3{
+                    font-size: 12px;
+                    font-weight: 400;
+                    span{
+                        float: left;
+                        width: 20px;height: 16px;
+                        background: url(../img/sprite.png) no-repeat;
+                        background-position: -24px 0px;
+                        margin-top: 0px;
+                        margin-right: 5px;
+                    }
+                    b{
+                        display: inline-block;
+                        width: 245px;
+                        height: 35px;
+                        font-weight: 400;
+                        a{
+                            color:#1DB1E6;
+                        }
+                    }
+                }
+            }
+        }
+        #zhuce{
+            width: 300px;
+            height: 47px;
+            background: #F10180;
+            border: none;
+            margin-left: 30px;
+            margin-top: 10px;
+            border-radius: 5px;
+            color: #fff;
+            outline: none;
+        }
+
     }
+}
+.footer{
+    width: 1000px;
+    height: 74px;
+    text-align: center;
+    margin: 0 auto;
+    line-height: 74px;
+    color: #ccc;
+    font-size: 13px;
 }
