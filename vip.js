@@ -131,7 +131,7 @@ window.onload=function(){
 							var strt ="<dl><dt><div><span>"+data[ss].name+"</span><i>></i></div></dt><dd>"
 							$.each(dada,function(num){
 								if(sl == dada[num].parentid){
-									strt +=` <a href="#">${dada[num].name}</a>`
+									strt +=` <a href="listing.html?${sb}">${dada[num].name}</a>`
 								}
 							})
 							strt+="</dd></dl>"

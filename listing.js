@@ -126,42 +126,95 @@ $(function(){
             $("#menuitem").find("ul").slideUp();
             $("#navnav_menu").hide()
             })
-
+            //导航栏吸顶效果
         $(window).scroll(function () { 
             var ss = $(this).scrollTop()//790
             if(ss>790){
-                $(".shownav").css({"position":"fixed","top":"-46px"});
+                $(".shownav").css({"position":"fixed","top":"0px"});
             }else{
                 $(".shownav").removeAttr("style")
             }
         });
-        
-        function overload(id,pageitem) {
-            $.get("http://47.104.244.134:8080/goodsbytid.do",{tid:13,page:1,limit:21},item_page)
-           function item_page(data){
+
+        // 生成页面 内容
+        function overload(id) {
+            if(id == undefined){
+                id = 1
+            }
+            $.get("http://47.104.244.134:8080/goodsbytid.do",{tid:13,page:id,limit:21},item_page)
+            function item_page(data){
                 var data = data.data
+                console.log(data)
                 data.shift()
                 var str = "";
                 $.each(data,function(sum){
                     if(data[sum].picurl == ""){
                         data[sum].picurl = "img/5018a6a1-8df1-4935-bba5-23c6e6f06f7c_420_531.jpg"
                     }
-                        str+=`<dl>
-                        <dt><img src="${data[sum].picurl}"</dt>
+                        str+=`<a href="#" data-id="${data[sum].id}"><dl>
+                        <dt><img src="${data[sum].picurl}"></dt>
                         <dd>
                             <h1><b>￥</b><span>${data[sum].price/100}</span></h1>
                             <p>${data[sum].name}</p>
                             <h3><span>不打折</span></h3>
                         </dd>
-                        </dl>`
-                        console.log(data[sum].picurl)
+                        </dl></a>`
                 })
                    $(".show_item").html(str)
                }
            }
-
            overload();
+           //页码点击特效
+           $(".pagewid").find("li").click(function(){
+                var sum = $(this).html()
+                $(this).addClass("xuanzhong").siblings().removeClass("xuanzhong")
+                $("#page_i").html(sum)
+                overload(sum);
+                Top();
+           })
+           //上一页
+           $("#upitem").click(function(){Upitem();})
+           //下一页
+            $("#downitem").click(function(){Downitem();})
+            //页码调转
+           $("#upitem_one").click(function(){Upitem();})
+           $("#downitem_one").click(function(){Downitem();})
+
+
+           
+            //下一页
+             function Downitem(){
+                var num = $(".pagewid").find("li").filter(".xuanzhong").html()
+                var sum = $(".pagewid").find("li").filter(".xuanzhong").index()
+                var leng = $(".pagewid").find("li").last().html()
+                ++num;
+                ++sum;
+                num = num>leng?leng:num
+                $("#page_i").html(num)
+                $(".pagewid").find("li").eq(sum).addClass("xuanzhong").siblings().removeClass("xuanzhong")
+                overload(num);
+                Top();
+             }
+
+            //上一页
+            
+             function Upitem(){
+                var num = $(".pagewid").find("li").filter(".xuanzhong").html()
+                var sum = $(".pagewid").find("li").filter(".xuanzhong").index()
+                var leng = $(".pagewid").find("li").first().html()
+                 num--;
+                 sum--;
+                 if(num<= 0){num = 1; return }
+                $("#page_i").html(num)
+                $(".pagewid").find("li").eq(sum).addClass("xuanzhong").siblings().removeClass("xuanzhong")
+                overload(num);
+                Top();
+            }
 
 
 
+       //回到上面
+       function Top(){
+           $("body,html").animate({"scrollTop":600},10);
+       }
 })
