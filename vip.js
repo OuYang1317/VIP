@@ -25,7 +25,7 @@ window.onload=function(){
 					$("#tiao").stop().animate({'left':354+num*232+"px"})
 				}
 				move();
-				timer = setInterval(move,2000);
+				timer = setInterval(move,4000);
 				$("#iremwen").find("p").each(function(){
 					$(this).mouseenter(function(){
 							var index = $(this).index()
@@ -37,10 +37,11 @@ window.onload=function(){
 						$(this).mouseleave(function(){
 							timer = setInterval(function(){
 								move();
-							},2000);
+							},4000);
 							})
 					})
-				$(".noe").mouseenter(function(){
+				$(".noe").mouseenter(function(e){
+					e.stopPropagation();
 					clearInterval(timer)
 					$(this).find("span").eq(0).stop().animate({"left":0}).end().eq(0).click(function(){
 						move();
@@ -49,15 +50,19 @@ window.onload=function(){
 						move();
 					})
 				})
-				$(".noe").mouseleave(function(){
+					
+
+
+				$(".noe").mouseleave(function(e){
+					e.stopPropagation();
 					$(this).find("span").eq(0).stop().animate({"left":"-33px"})
 					$(this).find("span").eq(1).stop().animate({"right":"-33px"})
-					timer = setInterval(function(){move();},2000);
+					timer = setInterval(function(){move();},4000);
 				})
 				
 				
 				
-				
+				//搜索框
 				$("#seranns").focus(function(e){
 					e.stopPropagation()
 					$.ajax({
@@ -227,7 +232,6 @@ window.onload=function(){
 						xs=xs<10?"0"+xs:xs
 						fz=fz<10?"0"+fz:fz
 						mz=mz<10?"0"+mz:mz
-						console.log($(".timerr").find("span"));
 					sss+=` <span>${xs}</span>
 					<span class="fen">${fz}</span>
 					<span class="miao">${mz}</span>`

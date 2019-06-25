@@ -31,7 +31,7 @@ $(function(){
             RemoveCookie("username")
         }
     })
-    $("#username").val(Getcookie("username")) 
+        $("#username").val(Getcookie("username")) 
        
 
 })
