@@ -1,13 +1,13 @@
 $(function(){
-    $(".dian1").click(function(){
-        $(".denglu").css({'height':'500px'});
-        $(this).hide().next().show()
-    })
-    $(".dian2").click(function(){
-        $(".denglu").css({'height':'435px'});
-        $(this).hide();
-        $(".dian1").show();
-    })
+    // $(".dian1").click(function(){
+    //     $(".denglu").css({'height':'500px'});
+    //     $(this).hide().next().show()
+    // })
+    // $(".dian2").click(function(){
+    //     $(".denglu").css({'height':'455px'});
+    //     $(this).hide();
+    //     $(".dian1").show();
+    // })
     
     $(".cloes").click(function(){
         $("#zhzhao").hide();
@@ -79,53 +79,56 @@ $(function(){
         $(".serach-log").hide();
     })
     //二级导航 接口
-    $.get("http://47.104.244.134:8080/goodstypelist.do",{l:1},function(data){
-    var str = "";
-    $.each(data, function(sum) {
-        str+=`<li data-id="${data[sum].id}" id ="${sum}"><a href="#">${data[sum].name}</a></li>`
-    });
-    $("#navnanbar").html(str);
-    var sb = $("#item123").html()
-    $("#menuitem").find("li").mouseenter(function(){
-            var sl = $(this).attr("data-id")
-            var ss = $(this).attr("id")
-            console.log(sb);
-            if(sl == undefined){
-                console.log("aa")
-                $("#item123").html(sb)
-                return
-            }
-            $.get("http://47.104.244.134:8080/goodstypelist.do",{l:2},function(dada){
-                var strt ="<dl><dt><div><span>"+data[ss].name+"</span><i>></i></div></dt><dd>"
-                $.each(dada,function(num){
-                    if(sl == dada[num].parentid){
-                        strt +=` <a href="#">${dada[num].name}</a>`
-                    }
-                })
-                strt+="</dd></dl>"
-                $("#item123").html(strt);
+			$.get("http://47.104.244.134:8080/goodstypelist.do",{l:1},function(data){
+				var str = "";
+				$.each(data, function(sum) {
+					str+=`<li data-id="${data[sum].id}" id ="${sum}"><a href="#">${data[sum].name}</a></li>`
+				});
+				$("#navnanbar").html(str);
+				var sb = $("#item123").html()
+				$("#menuitem").find("li").mouseenter(function(){
+						var sl = $(this).attr("data-id")
+						var ss = $(this).attr("id")
+						if(sl == undefined){
+							$("#item123").html(sb)
+							return
+						}
+						$.get("http://47.104.244.134:8080/goodstypelist.do",{l:2},function(dada){
+							var strt ="<dl><dt><div><span>"+data[ss].name+"</span><i>></i></div></dt><dd>"
+							$.each(dada,function(num){
+								if(sl == dada[num].parentid){
+									strt +=` <a href="listing.html?${sl/1+1}">${dada[num].name}</a>`
+								}
+							})
+							strt+="</dd></dl>"
+							$("#item123").html(strt);
+						})
+						$("#navnav_menu").show();
+				})
+			})
+
+
+			
+		//二级菜单显示
+		$("#menuitem").mousemove(function(e){
+			e.stopPropagation();
+			$(this).find("ul").slideDown();
+				})
+			$("#menuitem").find("li").mousemove(function(e){
+				e.stopPropagation();
+				$("#navnav_menu").show();
+			})
+			$("#navnav_menu").mousemove(function(e){
+				e.stopPropagation();
+				$("#menuitem").find("ul").show();
+				$(this).show()
+			})
+			$("body,html").mousemove(function(){
+				$("#menuitem").find("ul").slideUp();
+				$("#navnav_menu").hide()
             })
-            $("#navnav_menu").show();
-    })
-    })
-            //二级菜单显示
-            $("#menuitem").mousemove(function(e){
-            e.stopPropagation();
-            $(this).find("ul").slideDown();
-            })
-            $("#menuitem").find("li").mousemove(function(e){
-            e.stopPropagation();
-            $("#navnav_menu").show();
-            })
-            $("#navnav_menu").mousemove(function(e){
-            e.stopPropagation();
-            $("#menuitem").find("ul").show();
-            $(this).show()
-            })
-            $("body,html").mousemove(function(){
-            $("#menuitem").find("ul").slideUp();
-            $("#navnav_menu").hide()
-            })
+            
+
             //导航栏吸顶效果
         $(window).scroll(function () { 
             var ss = $(this).scrollTop()//790
@@ -137,21 +140,26 @@ $(function(){
         });
 
         // 生成页面 内容
-        function overload(id) {
+        function overload(num,id) {
             if(id == undefined){
                 id = 1
             }
-            $.get("http://47.104.244.134:8080/goodsbytid.do",{tid:13,page:id,limit:21},item_page)
+            $.get("http://47.104.244.134:8080/goodsbytid.do",{tid:num,page:id,limit:21},item_page)
             function item_page(data){
                 var data = data.data
-                console.log(data)
                 data.shift()
+                console.log(data)
                 var str = "";
+                if(data.length == 0){
+                    str+="<h5 id='erroo'>暂时没有数据很抱歉!!!</h5>"
+                    $(".show_item").html(str)
+                    return
+                }
                 $.each(data,function(sum){
                     if(data[sum].picurl == ""){
-                        data[sum].picurl = "img/5018a6a1-8df1-4935-bba5-23c6e6f06f7c_420_531.jpg"
+                        data[sum].picurl = "img/replace/"+Math.floor(Math.random()*10)+".jpg";
                     }
-                        str+=`<a href="#" data-id="${data[sum].id}"><dl>
+                        str+=`<a href="showitem.html?${data[sum].id}" data-id="${data[sum].id}"><dl>
                         <dt><img src="${data[sum].picurl}"></dt>
                         <dd>
                             <h1><b>￥</b><span>${data[sum].price/100}</span></h1>
@@ -163,13 +171,14 @@ $(function(){
                    $(".show_item").html(str)
                }
            }
-           overload();
+            var id = location.search.split("?")[1];
+           overload(id);
            //页码点击特效
            $(".pagewid").find("li").click(function(){
                 var sum = $(this).html()
                 $(this).addClass("xuanzhong").siblings().removeClass("xuanzhong")
                 $("#page_i").html(sum)
-                overload(sum);
+                overload(id,sum);
                 Top();
            })
            //上一页
@@ -192,7 +201,7 @@ $(function(){
                 num = num>leng?leng:num
                 $("#page_i").html(num)
                 $(".pagewid").find("li").eq(sum).addClass("xuanzhong").siblings().removeClass("xuanzhong")
-                overload(num);
+                overload(id,num);
                 Top();
              }
 
@@ -217,4 +226,38 @@ $(function(){
        function Top(){
            $("body,html").animate({"scrollTop":600},10);
        }
+
+
+//用户验证&记住用户名
+$("#login_").click(function(){
+	var user =  $("#usen").val();
+	var pad  =  $("#mim").val();
+	  $.post("http://47.104.244.134:8080/userlogin.do",{ "name":user,"password":pad},function(data){
+		  data = data.code;
+		  if(data == 1){
+			$(".error").show();
+		}else{
+            // window.location.href = 'index.html'
+            Setcookie("username",user)
+			Setcookie("pasd",pad)
+		}
+	  })
+	  if($("#chx").prop("checked")==true){
+		  Setcookie("username",user,7)
+	  }
+	  if($("#chx").prop("checked")==false){
+		  RemoveCookie("username")
+	  }
+  })
+
+
+
+
+
+
+
+
+
 })
+
+

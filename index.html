@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="font_kmche1qr528/iconfont.css">
     <script src="https://cdn.bootcss.com/jquery/1.11.1/jquery.js"></script>
+    <script src="js/cookie.js"></script>
     <script src="js/vip.js" type="text/javascript" charset="utf-8"></script>
 </head>
 <body>
@@ -19,7 +20,7 @@
             <div class="city">郑州市</div>
             <div class="city-arrows"></div>
         <ul class="nav-navbar">
-            <li><a href="#">请登录</a>
+            <li><a href="#" id ="name">请登录</a>
             <div class="login">
                 <div class="touxiang">
                     <span class="iconfont icon-renwu"></span>
@@ -37,7 +38,7 @@
                 </div>
             </div>
             </li>
-            <li><a href="#">注册</a></li>
+            <li><a href="register.html">注册</a></li>
             <li><a href="#">签到有礼</a></li>
             <li><a href="#">我的订单</a></li>
             <li><a href="#">我的特卖 <span></span></a>
@@ -93,8 +94,8 @@
     <div class="serach">
         <div class="nav-ser">
         <div class="logo">
-        <a href="#"><img src="img/1550737570483.png"></a>
-        <a href="#"><img src="img/1547114272497.png"></a>
+        <a href="index.html"><img src="img/1550737570483.png"></a>
+        <a href="index.html"><img src="img/1547114272497.png"></a>
          </div> 
          <!-- 搜索框 -->
          <div class="serch-input">
@@ -102,13 +103,6 @@
         <input id="seranns" type="text" placeholder="连衣裙">
         <a href=""><span class="iconfont icon-fangdajing"></span></a>  
 			<ul id = "serttt">
-				<li>asfa</li>
-				<li>asfa</li>
-				<li>asfa</li>
-				<li>asfa</li>
-				<li>asfa</li>
-				<li>asfa</li>
-				<li>asfa</li>
 			</ul>
         </div>
        
@@ -136,7 +130,7 @@
             <p id="num">0</p>
         </div>  
             <div class="shopping">
-                <p>好像还没有登录！<a href="#">马上登录</a> 查看购物袋</p>
+                <p>好像还没有登录！<a href="login.html">马上登录</a> 查看购物袋</p>
                 </div>
          </div>
         </div>
@@ -1418,16 +1412,15 @@
             <p>打开<b>唯品会APP-个人中心</b>，扫一扫登录</p>
         </div>
         <div id="zhanghu">
-            <form  action="">
                 <div class="uresname">
-                    <span class="iconfont icon-renwu"></span><input type="text">
+                    <span class="iconfont icon-renwu"></span><input id = "usen"type="text">
                 </div>
                 <div class="pasd">
-                    <span class="iconfont icon-suo"></span><input type="text">
+                    <span class="iconfont icon-suo"></span><input id ="mim" type="text">
                 </div>
-                <div class="chec"><h3><input type="checkbox" />记住密码</h3> <p><a href="#">忘记密码</a></p></div>
-                <input type="button" value="登录">
-            </form>
+                <p class="error">账号或密码错误，请重试</p>
+                <div class="chec"><h3><input id="chx" type="checkbox" />记住密码</h3> <p><a href="#">忘记密码</a></p></div>
+                <input id="login_" type="button" value="登录">
             <div class="weixin"><p></p><span class="iconfont icon-weixin"></span><p></p></div>
             <div class="denglufangshi"><ul>
                     <li>新浪微博<span>|</span></li>
@@ -1436,7 +1429,7 @@
                     </ul>
                     <h4 class="dian1">更多</h4>
                     <h4 class="dian2">收起</h4>
-                    <h3><a href="#"></a>免费注册</h3>
+                    <h3><a href="register.html">免费注册</a></h3>
             </div>
         </div>
         

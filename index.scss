@@ -961,6 +961,7 @@ body{
     border: 1px solid #ccc;
     border-radius: 6px;
     display: none;
+    background: #fff;
     >ul{
         >li{
             width: 70px;
@@ -1362,7 +1363,7 @@ footer{
     display:none;
 }
 .denglu{
-    height: 435px;
+    height: 455px;
     width: 360px;
     background: #fff;
     border: 4px solid #ccc;
@@ -1470,7 +1471,7 @@ footer{
                 width: 15px;height: 15px;
             }
         }
-        form>input{
+        >input{
             width: 100%; 
             height: 46px;
             text-align: center;
@@ -1516,6 +1517,7 @@ footer{
         }
         span{
             font-size: 40px;
+            color: #71BE47;
         }
     }
     .denglufangshi{
@@ -1538,7 +1540,7 @@ footer{
        }
     }
     >ul{
-        margin-top: 20px;
+        margin-top: 35px;
         margin-left: 20px;
         li{
             float: left;
@@ -1551,5 +1553,10 @@ footer{
     }
 }
 .dian2{
+    display: none;
+}
+.error{
+    margin-left: 40px;
+    color: red;
     display: none;
 }

@@ -547,6 +547,13 @@ body{
             width:420px;
             height: 420px;
             margin-bottom:8px;
+            cursor: crosshair;
+            overflow: hidden;
+            position: relative;
+            img{
+                width: 420px;
+               position: absolute;
+            }
         }
         .img_samll{
             width: 420px;
@@ -680,6 +687,7 @@ body{
                     text-align: center;
                     color: #7D7C7C;
                     font-size: 20px;
+                    cursor: pointer;
                     &:first-child{
                         border-right:1px solid #E4E3E3; 
                     }
@@ -742,7 +750,12 @@ body{
         margin-top: 10px;
     }
 }
-
+.zoom{
+    width: 100px;
+    height: 100px;
+    background: rgba(123,123,123,.5);
+    position: absolute;
+}
 
 
 

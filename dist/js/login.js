@@ -11,7 +11,6 @@ $(function(){
         $("#saoma").hide();
         $("#zhanghu").show();
     })
-
     //用户验证&记住用户名
     $("#btn").click(function(){
       var user =  $("#username").val()
@@ -32,6 +31,4 @@ $(function(){
         }
     })
         $("#username").val(Getcookie("username")) 
-       
-
 })

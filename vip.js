@@ -122,7 +122,6 @@ window.onload=function(){
 						var sl = $(this).attr("data-id")
 						var ss = $(this).attr("id")
 						if(sl == undefined){
-							console.log("aa")
 							$("#item123").html(sb)
 							return
 						}
@@ -130,7 +129,7 @@ window.onload=function(){
 							var strt ="<dl><dt><div><span>"+data[ss].name+"</span><i>></i></div></dt><dd>"
 							$.each(dada,function(num){
 								if(sl == dada[num].parentid){
-									strt +=` <a href="listing.html">${dada[num].name}</a>`
+									strt +=` <a href="listing.html?${sl/1+1}">${dada[num].name}</a>`
 								}
 							})
 							strt+="</dd></dl>"
@@ -189,15 +188,15 @@ window.onload=function(){
 
 
 			//更多点击收起
-			$(".dian1").click(function(){
-				$(".denglu").css({'height':'500px'});
-				$(this).hide().next().show()
-			})
-			$(".dian2").click(function(){
-				$(".denglu").css({'height':'435px'});
-				$(this).hide();
-				$(".dian1").show();
-			})
+			// $(".dian1").click(function(){
+			// 	$(".denglu").css({'height':'500px'});
+			// 	$(this).hide().next().show()
+			// })
+			// $(".dian2").click(function(){
+			// 	$(".denglu").css({'height':'455px'});
+			// 	$(this).hide();
+			// 	$(".dian1").show();
+			// })
 			
 			$(".cloes").click(function(){
 				$("#zhzhao").hide();
@@ -240,32 +239,63 @@ window.onload=function(){
 					$(".timerr").html(sss)
 			}
 			setInterval(itemtiem,1000)
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
+				
+//用户验证&记住用户名
+$("#login_").click(function(){
+	var user =  $("#usen").val();
+	var pad  =  $("#mim").val();
+	  $.post("http://47.104.244.134:8080/userlogin.do",{ "name":user,"password":pad},function(data){
+		console.log(data)
+		  data = data.code;
+		  if(data == 1){
+			$(".error").show();
+		}else{
+			Setcookie("username",user)
+			Setcookie("pasd",pad)
+		}
+	  })
+	  if($("#chx").prop("checked")==true){
+		  Setcookie("username",user,7)
+	  }
+	  if($("#chx").prop("checked")==false){
+		  RemoveCookie("username")
+	  }
+	  })
+	  //取值
+	  $("#username").val(Getcookie("username")) 
+
+
+
+
+	  function denglu(){
+		var te = Getcookie("username")
+		var pd = Getcookie("pasd")
+		if(te == undefined && pd ==undefined){
+			return;
+		}
+		$.post("http://47.104.244.134:8080/userlogin.do",{ "name":te,"password":pd},function(data){
+			console.log(data)
+			  data = data.code;
+			  if(data == 1){
+				$(".error").show();
+			}else{
+				console.log("aa")
+				Setcookie("username",te)
+				Setcookie("pasd",pd)
+			}
+		  })
+	}		
+			denglu();
+
+
+
+
+
+
+
+
+
+
+
 	})
 }
