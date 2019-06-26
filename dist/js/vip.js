@@ -245,13 +245,16 @@ $("#login_").click(function(){
 	var user =  $("#usen").val();
 	var pad  =  $("#mim").val();
 	  $.post("http://47.104.244.134:8080/userlogin.do",{ "name":user,"password":pad},function(data){
+		  var taken = data.data.token
 		console.log(data)
 		  data = data.code;
 		  if(data == 1){
 			$(".error").show();
 		}else{
-			Setcookie("username",user)
-			Setcookie("pasd",pad)
+			window.location.href = 'index.html?token='+taken
+            Setcookie("username",user)
+            Setcookie("pasd",pad)
+            Setcookie("token",taken)
 		}
 	  })
 	  if($("#chx").prop("checked")==true){
@@ -274,7 +277,9 @@ $("#login_").click(function(){
 			return;
 		}
 		$.post("http://47.104.244.134:8080/userlogin.do",{ "name":te,"password":pd},function(data){
-			console.log(data)
+			  var strr = "";
+			  var str =""
+			  var ff = ""
 			  data = data.code;
 			  if(data == 1){
 				$(".error").show();
@@ -282,6 +287,17 @@ $("#login_").click(function(){
 				console.log("aa")
 				Setcookie("username",te)
 				Setcookie("pasd",pd)
+				str+=`<span class="iconfont icon-renwu"></span>
+					<p><a id="loginn1" href="#">用户  ${te}</a></p>`
+					$(".touxiang").html(str);
+				strr+=`<a href="#" id ="name">欢迎 ${te}</a>`
+					$(".idid").html(strr)
+					ff+=`<a href="#">注销</a>`
+					$(".logout").html(ff);
+					$(".logout").click(function(){
+						RemoveCookie("username")
+						window.location.href="index.html"
+					})
 			}
 		  })
 	}		

@@ -148,7 +148,6 @@ $(function(){
             function item_page(data){
                 var data = data.data
                 data.shift()
-                console.log(data)
                 var str = "";
                 if(data.length == 0){
                     str+="<h5 id='erroo'>暂时没有数据很抱歉!!!</h5>"
@@ -233,13 +232,15 @@ $("#login_").click(function(){
 	var user =  $("#usen").val();
 	var pad  =  $("#mim").val();
 	  $.post("http://47.104.244.134:8080/userlogin.do",{ "name":user,"password":pad},function(data){
+          var taken = data.data.token
 		  data = data.code;
 		  if(data == 1){
 			$(".error").show();
 		}else{
-            // window.location.href = 'index.html'
+            window.location.href = 'index.html?token='+taken
             Setcookie("username",user)
-			Setcookie("pasd",pad)
+            Setcookie("pasd",pad)
+            Setcookie("token",taken)
 		}
 	  })
 	  if($("#chx").prop("checked")==true){
