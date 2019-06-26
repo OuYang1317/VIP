@@ -13,7 +13,6 @@ $wt:10px;
 $navcolor:#777;
 body{
     font-size: 12px;
-    height: 3000px;
 }
 .vip-nav{
     width: 100%;
@@ -250,13 +249,16 @@ body{
         margin: 0 auto;
         height: 100px;
         .logo{
-            width: 480px;
+            width: 880px;
             height: 100px;
             float: left;
             a{
                 width: 304px;
                 height: 100px;
                 display: inline-block;
+                &:last-child{
+                    margin-left: 412px;
+                }
                 img{
                     width: 304px;
                     height: 100px;
@@ -271,112 +273,17 @@ body{
             }
             
         }
-        .serch-input{
-            width: 451px;
-            height: 34px;
-            float: left;
-            margin-left: 40px;
-            margin-top: 33px;
-            .int{
-                    width: 451px;
-                    height: 34px; 
-                    border: 1px solid #fc0387;
-                    border-radius: 3px;
-                    position: relative;
-                    input{
-                        width:365px;
-                        height: 34px;
-                        border: none;
-                        float: left;
-                        outline: none;
-                        padding-left: 15px;
-                    }
-                    a{
-                        float: right;
-                        width: 70px;
-                        height: 34px;
-                        background: #fc0387;
-                        text-align: center;
-                        color:#fff;
-                        span{
-                            font-size: 22px;
-                            line-height: 34px;
-                        }
-                    }
-                    ul{
-                        width: 451px;
-                        height: 215px;
-                        position: absolute;
-                        z-index: 999;
-                        background: #fff;
-                        top: 35px;
-                        left: -1px;
-                        border:1px solid #CCCCCC;
-                        display: none;
-                        li{
-                            margin:5px 0;
-                            padding-left: 15px;
-                            &:hover{
-                                background:#F10180;
-                                color: #fff;
-                                cursor: pointer;
-                            }
-                        }
-                    }
-            }
-            .serach-log{
-                width: 100%;
-                height: 170px;
-                border: 1px solid #ccc;
-                padding-top: 10px;
-                position: relative;
-                z-index:145;
-                background: #fff;
-                display: none;
-                .serach-item{
-                    float: left;
-                    width: 30%;
-                    height: 100%;
-                    border-right: 1px solid #ccc;
-                    margin-left: 10px;
-                    h3{
-                        font-weight: 300;
-                        color: #777;
-                        font-size: 12px;
-                        margin-bottom: 10px;
-                    }
-                }
-                .tuijian{
-                    float: left;
-                    width: 60%;
-                    height: 100%;
-                    margin-left: 10px;
-                    h3{
-                        font-weight: 300;
-                        color: #777;
-                        font-size: 12px;
-                        margin-bottom: 10px;
-                    }
-                    li{
-                        float: left;
-                        padding: 3px;
-                        border: 1px solid #ccc;
-                        font-size: 11px;
-                        margin: 3px;
-                    }
-                }
-            }
-        }
         .shoping{
             width: 96px;
             height: 34px;
             float: left;
-            margin-left: 65px;
+            margin-left: 35px;
             margin-top: 33px;
             border-radius:2px;
             text-align: center;
             line-height:34px;
             position: relative;
+            background: #fff;
             z-index:102;
             .shoping-item{
                 width: 100%;
@@ -386,13 +293,14 @@ body{
                 top: 0px;
                 border: 1px solid #777;
                 z-index:10;
+                
                 span{
                     display: inline-block;
-                    color: #000;
+                    color: #333333;
                 }
                 p{
                     display: inline-block;
-                    color: #ccc;
+                    color: #333333;
                 }
                 #num{
                     width:25px;
@@ -595,8 +503,226 @@ body{
 .contenitem{
     width: 1170px;
     height: 1100px;
-    background: skyblue;
     margin: 0 auto;
+    .navmianbao{
+        margin: 20px 0;
+        width: 900px;
+        height: 20px;
+        margin-bottom: 10px;
+        color: #929492;
+        line-height: 20px;
+        a{
+            color: #929492;
+        }
+        h3{
+            width: 100%;
+            height: 20px;
+            font-weight: 300;
+            font-size: 12px;
+            p{
+                display: inline-block;
+                margin-right: 5px;
+                i{
+                    font-style: normal;
+                    margin-left: 5px;
+                    font-size: 10px;
+                }
+            }
+        }
+    }
+
+    .concet_img{
+        width: 456px;
+        height: 495px;
+        float: left;
+        .img_big{
+            width:420px;
+            height: 420px;
+            margin-bottom:8px;
+        }
+        .img_samll{
+            width: 420px;
+            height: 64px;
+            li{
+                width: 64px;
+                height: 64px;
+                float: left;
+                margin: 0 5px;
+                border: 1px solid #CCCCCC;
+                img{
+                    width: 64px;
+                    height: 64px;
+                }
+            }
+        }
+    }
+    .conceet_wen{
+        float: left;
+        width:530px;
+        height:  492px;
+        padding-left: 40px;
+        .biaoti{
+            width: 530px;
+            height: 75px;
+        }
+        .concet_price{
+            width: 530px;
+            height: 58px;
+            background: #FAF5F8;
+            padding-bottom: 20px;
+            display: flex;
+            line-height: 78px;
+            span{
+                font-size: 20px;
+                line-height: 95px;
+                color: #F10180;
+            }
+            h3{
+                font-size: 40px;
+                font-weight: 400;
+                color: #F10180;
+            }
+            del{
+                font-size: 15px;
+                color: #666;
+                line-height: 95px;
+                margin-left: 20px;
+            }
+            i{
+                font-style: normal;
+                color: #666;
+                line-height: 95px;
+                margin-left: 10px;
+                font-size: 15px;
+            }
+        }
+        .concet_area{
+            width: 530px;
+            height: 32px;
+            margin-top: 10px;
+            span{
+                line-height: 32px;
+                color: #999999;
+            }
+        }
+        .concet_option{
+            width: 530px;
+            height: 82px;
+            padding-top: 20px;
+            &:before{
+                content: ".";
+                display: block;
+                height: 0;
+                clear: both;
+                visibility: hidden;
+            }
+            h3{
+                float: left;
+                width: 40px;
+                height: 82px;
+                font-size: 13px;
+                font-weight: 300;
+                color: #999999;
+            }
+            ul{
+                float:left;
+                height: 82px;
+                width: 490px;
+                 li{
+                float: left;
+                padding: 3px;
+                border: 1px solid #666;
+                margin-left: 10px;
+                margin-top: 5px;
+                }
+            }
+        }
+        .concet_quantity{
+            width: 550px;
+            height:30px;
+            padding: 5px 0;
+            line-height: 30px;
+            &:before{
+                content: ".";
+                display: block;
+                height: 0;
+                clear: both;
+                visibility: hidden;
+            }
+            h3{
+                float: left;
+                width: 40px;
+                height: 30px;
+                font-size: 13px;
+                font-weight: 300;
+                color: #999999;
+            }
+            .quantity_option{
+                width: 77px;
+                height: 30px;
+                float: left;
+                 border: 1px solid #333333;
+                span{
+                    float: left;
+                    width: 23px;
+                    height: 30px;
+                    background: #F9F8F8;
+                    line-height: 30px;
+                    font-size: 13px;
+                    text-align: center;
+                    color: #7D7C7C;
+                    font-size: 20px;
+                    &:first-child{
+                        border-right:1px solid #E4E3E3; 
+                    }
+                    &:last-child{
+                        border-left: 1px solid #E4E3E3;
+                    }
+                }
+                input{
+                    float: left;
+                    width: 29px;
+                    height: 30px;
+                    border: none;
+                    text-align: center;
+                }
+            }
+        }
+        #shopping{
+            margin-top: 20px;
+            width: 200px;
+            height: 50px;
+            background: #F10180;
+            color: #fff;
+            border-radius: 3px;
+            border:none;
+            font-size: 20px;
+            line-height: 50px;
+            margin-left: 40px;
+            .iconfont{
+                font-size: 23px;
+                margin-right: 10px;
+            }
+        }
+        .distribution{
+            width: 550px;
+            height: 32px;
+            line-height: 32px;
+            margin-top: 10px;
+            h3{
+                float: left;
+                width: 40px;
+                height: 30px;
+                font-size: 13px;
+                font-weight: 300;
+                color: #999999;
+            }
+            span{
+                font-size: 12px;
+                color: #333333;
+            }
+        }
+    }
 }
 
 
@@ -811,7 +937,7 @@ footer{
     background: #262626;
     color: #fff;
     padding-top: 100px;
-    z-index: 40;
+    z-index: 203;
     ul{
         text-align: center;
         position: relative;
