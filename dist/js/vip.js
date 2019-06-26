@@ -121,7 +121,6 @@ window.onload=function(){
 				$("#menuitem").find("li").mouseenter(function(){
 						var sl = $(this).attr("data-id")
 						var ss = $(this).attr("id")
-						console.log(sb);
 						if(sl == undefined){
 							console.log("aa")
 							$("#item123").html(sb)
@@ -140,6 +139,9 @@ window.onload=function(){
 						$("#navnav_menu").show();
 				})
 			})
+
+
+			
 		//二级菜单显示
 		$("#menuitem").mousemove(function(e){
 			e.stopPropagation();

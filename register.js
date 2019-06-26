@@ -81,18 +81,18 @@ $("#zhuce").click(function(){
         $(".tiaokuan").css({"opacity":0})
     }
     $('#loginitem').show()
-    var psd1 =$(".pasd").find("input").val()
-    var user1 = $(".uresename").find("input").val()
+    var psd1 =$(".pasd").find("input").val();
+    var user1 = $(".uresename").find("input").val();
     $. post("http://47.104.244.134:8080/usersave.do",{
                         username:user1,
                         password:psd1,
-                        email:"user1+@qq.com",
+                        email:user1+"@qq.com",
                         sex:"女"},function(data){
                         $('#loginitem').hide()
                         if(data.code == 0){
                             window.location.href="index.html"
                 }
-              })
+            })
 })
   
 
