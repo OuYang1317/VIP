@@ -1,4 +1,60 @@
 $(function(){
+// 	$("#login_").click(function(){
+// 		console.log("aa")
+// 		var user =  $("#usen").val();
+// 		var pad  =  $("#mim").val();
+// 		var strr = "";
+// 		var str ="";
+// 		var ff = "";
+// 		var ssd =""
+// 		  $.post("http://47.104.244.134:8080/userlogin.do",{ "name":user,"password":pad},function(data){
+// 			var da = data
+// 			data = data.code;
+// 			  if(data == 1){
+// 				$("#error1").show(); 
+// 			}else{
+// 				var taken = da.data.token
+// 				$("#zhzhao").hide();
+// 				Setcookie("username",user,)
+// 				Setcookie("pasd",pad,)
+// 				Setcookie("token",taken)
+// 				str+=`<span class="iconfont icon-renwu"></span><p><a id="loginn1" href="#">用户  ${user}</a></p>`
+// 						$(".touxiang").html(str);
+// 					strr+=`<a href="#" id ="name">欢迎 ${user}</a>`
+// 						$(".idid").html(strr)
+// 						ff+=`<a href="#">注销</a>`
+// 						$(".logout").html(ff);
+// 					ssd+=`你好 <a href='#'> ${user}</a>`
+// 						$(".ning").html(ssd)
+// 						// 侧边栏请求数据
+// 		$.get("http://47.104.244.134:8080/cartlist.do",{token:taken},function(data){
+// 			var str =""
+// 			var index = data.length
+// 			$.each(data,function(i){
+// 				str+=` <li><a href="cart.html">
+// 				<div><img src="${data[i].goods.picurl}"></div>
+// 				<div><p>${data[i].goods.name}</p><span>${data[i].count}</span></div>
+// 				<div><p>￥${(data[i].goods.price/100*data[i].count).toFixed(2)}</p></div>
+// 				</a>
+// 			</li>`
+// 			})
+// 			$("#listitem").html(str)
+// 			$("#indexx").html(index);
+// 		})
+// 				//注销
+// 						$(".logout").click(function(){
+// 							RemoveCookie("username");
+// 							RemoveCookie("token")
+// 							window.location.href="showitem.html"})
+// 							}
+// 			  })
+// 		  if($("#chx").prop("checked")==true){
+// 			  Setcookie("username",user,7)
+// 		  }
+// 		  if($("#chx").prop("checked")==false){
+// 			  RemoveCookie("username")
+// 		  }
+// })
     		//二级导航 接口
 			$.get("http://47.104.244.134:8080/goodstypelist.do",{l:1},function(data){
 				var str = "";
@@ -121,15 +177,127 @@ $(".quantity_option").find("span").eq(1).click(function(){
     $(".quantity_option").find("input").val(num)
 })
 //加入购物车
-var taken = Getcookie("token")
- $("#shopping").click(function(){
-	for(var i = 0;i<$("#suno").val();i++){
-		$.get("http://47.104.244.134:8080/cartsave.do",{gid:id,token:taken},function(data){
-     })
-}
-     alert("成功");
+
+$("#login_").click(function(){
+	console.log("aa")
+	var user =  $("#usen").val();
+	var pad  =  $("#mim").val();
+	var strr = "";
+	var str ="";
+	var ff = "";
+	var ssd =""
+	  $.post("http://47.104.244.134:8080/userlogin.do",{ "name":user,"password":pad},function(data){
+		var da = data
+		data = data.code;
+		  if(data == 1){
+			$("#error1").show(); 
+		}else{
+			var taken = da.data.token
+			$("#zhzhao").hide();
+			Setcookie("username",user,)
+			Setcookie("pasd",pad,)
+			Setcookie("token",taken)
+			str+=`<span class="iconfont icon-renwu"></span><p><a id="loginn1" href="#">用户  ${user}</a></p>`
+					$(".touxiang").html(str);
+				strr+=`<a href="#" id ="name">欢迎 ${user}</a>`
+					$(".idid").html(strr)
+					ff+=`<a href="#">注销</a>`
+					$(".logout").html(ff);
+				ssd+=`你好 <a href='#'> ${user}</a>`
+					$(".ning").html(ssd)
+					// 侧边栏请求数据
+	$.get("http://47.104.244.134:8080/cartlist.do",{token:taken},function(data){
+		var str =""
+		var index = data.length
+		$.each(data,function(i){
+			str+=` <li><a href="cart.html">
+			<div><img src="${data[i].goods.picurl}"></div>
+			<div><p>${data[i].goods.name}</p><span>${data[i].count}</span></div>
+			<div><p>￥${(data[i].goods.price/100*data[i].count).toFixed(2)}</p></div>
+			</a>
+		</li>`
+		})
+		$("#listitem").html(str)
+		$("#indexx").html(index);
+	})
+			//注销
+			$(".logout").click(function(){
+					RemoveCookie("username");
+						RemoveCookie("token")
+						window.location.href="showitem.html"})
+						 	}
+		  })
+	  if($("#chx").prop("checked")==true){
+		  Setcookie("username",user,7)
+	  }
+	  if($("#chx").prop("checked")==false){
+		  RemoveCookie("username")
+	  }
 })
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ $("#shopping").click(function(){
+	if(Getcookie("token") == undefined){
+		alert("您还没有登录，请登录")
+	$("#zhzhao").show();
+	return
+	}else{
+	var taken = Getcookie("token")
+	for(var i = 0;i<$("#suno").val();i++){$.get("http://47.104.244.134:8080/cartsave.do",{gid:id,token:taken},function(data){})}
+	alert("成功");
+}
+})
 }
 //点击事件合集
 $(".cloes").click(function(){
@@ -172,7 +340,11 @@ $(".zhd").click(function(){
 
 
 // 侧边栏请求数据 
-$.get("http://47.104.244.134:8080/cartlist.do",{token:taken},function(data){
+
+if(taken == undefined){
+	return;
+}else{
+	$.get("http://47.104.244.134:8080/cartlist.do",{token:taken},function(data){
 	var str =""
 	console.log(data)
 	var index = data.length
@@ -187,7 +359,7 @@ $.get("http://47.104.244.134:8080/cartlist.do",{token:taken},function(data){
 	$("#listitem").html(str)
 	$("#indexx").html(index);
 })
-
+}
 
 
 
@@ -217,46 +389,45 @@ $("#top").click(function(){
 
 
 //用户验证&记住用户名
-$("#login_").click(function(){
-	var user =  $("#usen").val();
-	var pad  =  $("#mim").val();
-	var strr = "";
-	var str ="";
-	var ff = "";
-	  $.post("http://47.104.244.134:8080/userlogin.do",{ "name":user,"password":pad},function(data){
-		var taken = data.data.token
-		data = data.code;
-		console.log("aa")
-		  if(data == 1){
-			$(".error").show();
-		}else{
-			$("#zhzhao").hide();
-            Setcookie("username",user)
-			Setcookie("pasd",pad)
-			console.log(user,pad)
-			Setcookie("token",taken)
-			str+=`<span class="iconfont icon-renwu"></span><p><a id="loginn1" href="#">用户  ${user}</a></p>`
-					$(".touxiang").html(str);
-				strr+=`<a href="#" id ="name">欢迎 ${user}</a>`
-					$(".idid").html(strr)
-					ff+=`<a href="#">注销</a>`
-					$(".logout").html(ff);
-					$(".logout").click(function(){RemoveCookie("username");window.location.href="index.html"})
-		}
-	  })
-	  if($("#chx").prop("checked")==true){
-		  Setcookie("username",user,7)
-	  }
-	  if($("#chx").prop("checked")==false){
-		  RemoveCookie("username")
-	  }
-	  })
+// $("#login_").click(function(){
+// 	var user =  $("#usen").val();
+// 	var pad  =  $("#mim").val();
+// 	var strr = "";
+// 	var str ="";
+// 	var ff = "";
+// 	var ssd =""
+// 	  $.post("http://47.104.244.134:8080/userlogin.do",{ "name":user,"password":pad},function(data){
+// 		var taken = data.data.token
+// 		data = data.code;
+// 		console.log("aa")
+// 		  if(data == 1){
+// 			$(".error").show();
+// 		}else{
+// 			$("#zhzhao").hide();
+//             Setcookie("username",user)
+// 			Setcookie("pasd",pad)
+// 			console.log(user,pad)
+// 			Setcookie("token",taken)
+// 			ssd+=`你好 <a href='#'> ${user}</a>`
+// 			$(".ning").html(ssd)
+// 			str+=`<span class="iconfont icon-renwu"></span><p><a id="loginn1" href="#">用户  ${user}</a></p>`
+// 					$(".touxiang").html(str);
+// 				strr+=`<a href="#" id ="name">欢迎 ${user}</a>`
+// 					$(".idid").html(strr)
+// 					ff+=`<a href="#">注销</a>`
+// 					$(".logout").html(ff);
+// 					$(".logout").click(function(){RemoveCookie("username");window.location.href="index.html"})
+// 		}
+// 	  })
+// 	  if($("#chx").prop("checked")==true){
+// 		  Setcookie("username",user,7)
+// 	  }
+// 	  if($("#chx").prop("checked")==false){
+// 		  RemoveCookie("username")
+// 	  }
+// 	  })
 	  //取值
 	  $("#username").val(Getcookie("username")) 
-
-
-
-
 	  function denglu(){
 		var te = Getcookie("username")
 		var pd = Getcookie("pasd")
@@ -267,6 +438,7 @@ $("#login_").click(function(){
 			  var strr = "";
 			  var str ="";
 			  var ff = "";
+			  var ssd=""
 			  data = data.code;
 			  if(data == 1){
 				$(".error").show();
@@ -277,13 +449,16 @@ $("#login_").click(function(){
 				str+=`<span class="iconfont icon-renwu"></span>
 					<p><a id="loginn1" href="#">用户  ${te}</a></p>`
 					$(".touxiang").html(str);
+					ssd+=`你好 <a href='#'> ${te}</a>`
+					$(".ning").html(ssd)
 				strr+=`<a href="#" id ="name">欢迎 ${te}</a>`
 					$(".idid").html(strr)
 					ff+=`<a href="#">注销</a>`
 					$(".logout").html(ff);
 					$(".logout").click(function(){
 						RemoveCookie("username")
-						window.location.href="index.html"
+						RemoveCookie("token")
+						window.location.href="showitem.html?"+id
 					})
 			}
 		  })

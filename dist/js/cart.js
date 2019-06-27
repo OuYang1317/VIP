@@ -38,7 +38,7 @@ $(function(){
                     str+=` <li goods-id="${data[i].goods.id}">
                     <div><img src="${data[i].goods.picurl}"/><p>${data[i].goods.name}</p></div>
                     <div class = "price">￥${data[i].goods.price/100}</div>
-                    <div><h1 data-id="${data[i].id}" goods-id="${data[i].goods.id}"><span class= "down">-</span><input id="summ" type="text" value="${data[i].count}"><span class ="up">+</span></h1></div>
+                    <div id = "cartt"><h1 data-id="${data[i].id}" goods-id="${data[i].goods.id}"><span class= "down">-</span><input id="summ" type="text" value="${data[i].count}"><span class ="up">+</span></h1></div>
                     <div class = "aggregate_money">￥${(data[i].goods.price/100*data[i].count).toFixed(2)}</div>
                     <div class="dedel"><i data-id="${data[i].id}" goods-id="${data[i].goods.id}">删除</i></div>
                     </li>`
@@ -46,8 +46,7 @@ $(function(){
                 $("#cart_item").html(str)
                     var sum = 0;
                     $("#cart_item").find(".aggregate_money").each(function(){
-                        sum += Number($(this).html().split("￥")[1])
-                    })
+                        sum += Number($(this).html().split("￥")[1])})
                         var ber = $("#cart_item").find("li").length
                         $(".message_").find("b").text("￥"+sum.toFixed(2))
                         $(".moke").text("￥"+sum.toFixed(2))
@@ -101,8 +100,41 @@ $(function(){
 
                 })
 
-
-
+                $("#cartt").find("input").focus(function(){
+                    console.log("aa")
+                    var bn = $(this).val()
+                    $(this).blur(function(){
+                        var an = $(this).val()
+                        if(an<=0){an = 1}
+                        if(an-bn == 0){return}
+                        if(bn - an > 0){
+                            var id   = $(this).parent().attr("data-id")
+                            var goid = $(this).parent().attr("goods-id")
+                            var price = $(this).parents("li").find(".price").html().split("￥")[1]
+                                alter(id,goid,an - bn,taken)
+                            $(this).parents("li").find(".aggregate_money").text("￥"+(an*price).toFixed(2))
+                            var sum = 0;
+                            $("#cart_item").find(".aggregate_money").each(function(){
+                                sum += Number($(this).html().split("￥")[1])
+                            })
+                            $(".message_").find("b").text("￥"+sum.toFixed(2))
+                            $(".moke").text("￥"+sum.toFixed(2))
+                        }else{
+                            var id   = $(this).parent().attr("data-id")
+                            var goid = $(this).parent().attr("goods-id")
+                            var price = $(this).parents("li").find(".price").html().split("￥")[1]
+                                console.log(an - bn)
+                                alter(id,goid,an-bn,taken)
+                            $(this).parents("li").find(".aggregate_money").text("￥"+(an*price).toFixed(2))
+                            var sum = 0;
+                            $("#cart_item").find(".aggregate_money").each(function(){
+                                sum += Number($(this).html().split("￥")[1])
+                            })
+                            $(".message_").find("b").text("￥"+sum.toFixed(2))
+                            $(".moke").text("￥"+sum.toFixed(2))
+                        }
+                    })
+                })
 
 
 

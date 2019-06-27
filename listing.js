@@ -158,7 +158,7 @@ $(function(){
                     if(data[sum].picurl == ""){
                         data[sum].picurl = "img/replace/"+Math.floor(Math.random()*10)+".jpg";
                     }
-                        str+=`<a href="showitem.html?${data[sum].id}" data-id="${data[sum].id}"target="_blank"><dl>
+                        str+=`<a href="showitem.html?${data[sum].id}" data-id="${data[sum].id}"><dl>
                         <dt><img src="${data[sum].picurl}"></dt>
                         <dd>
                             <h1><b>￥</b><span>${data[sum].price/100}</span></h1>
@@ -231,17 +231,21 @@ $(function(){
 //用户验证&记住用户名
 $("#login_").click(function(){
 	var user =  $("#usen").val();
-	var pad  =  $("#mim").val();
+    var pad  =  $("#mim").val();
+    var ssd =""
 	  $.post("http://47.104.244.134:8080/userlogin.do",{ "name":user,"password":pad},function(data){
-          var taken = data.data.token
+          var da = data
 		  data = data.code;
 		  if(data == 1){
-			$(".error").show();
+			$(".error1").show();
 		}else{
+            var taken = da.data.token
             window.location.href = 'listing.html?'+id+'?token='+taken
             Setcookie("username",user)
             Setcookie("pasd",pad)
             Setcookie("token",taken)
+            ssd+=`你好 <a href='#'> ${te}</a>`
+			$(".ning").html(ssd)
 		}
 	  })
 	  if($("#chx").prop("checked")==true){
@@ -263,6 +267,7 @@ $("#login_").click(function(){
           var strr = "";
           var str ="";
           var ff = "";
+          var ssd =""
           data = data.code;
           if(data == 1){
             $(".error").show();
@@ -275,6 +280,8 @@ $("#login_").click(function(){
                 $(".touxiang").html(str);
             strr+=`<a href="#" id ="name">欢迎 ${te}</a>`
                 $(".idid").html(strr)
+                ssd+=`你好 <a href='#'> ${te}</a>`
+				$(".ning").html(ssd)
                 ff+=`<a href="#">注销</a>`
                 $(".logout").html(ff);
                 $(".logout").click(function(){

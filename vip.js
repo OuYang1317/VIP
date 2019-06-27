@@ -1,6 +1,6 @@
 window.onload=function(){
-//用户验证&记住用户名
 $("#login_").click(function(){
+	console.log("aa")
 	var user =  $("#usen").val();
 	var pad  =  $("#mim").val();
 	var strr = "";
@@ -8,11 +8,12 @@ $("#login_").click(function(){
 	var ff = "";
 	var ssd =""
 	  $.post("http://47.104.244.134:8080/userlogin.do",{ "name":user,"password":pad},function(data){
-		taken = data.data.token
+		var da = data
 		data = data.code;
 		  if(data == 1){
-			$("#error1").show();
+			$("#error1").show(); 
 		}else{
+			var taken = da.data.token
 			$("#zhzhao").hide();
             Setcookie("username",user,)
 			Setcookie("pasd",pad,)
@@ -25,12 +26,27 @@ $("#login_").click(function(){
 					$(".logout").html(ff);
 				ssd+=`你好 <a href='#'> ${user}</a>`
 					$(".ning").html(ssd)
+					// 侧边栏请求数据
+	$.get("http://47.104.244.134:8080/cartlist.do",{token:taken},function(data){
+		var str =""
+		var index = data.length
+		$.each(data,function(i){
+			str+=` <li><a href="cart.html">
+			<div><img src="${data[i].goods.picurl}"></div>
+			<div><p>${data[i].goods.name}</p><span>${data[i].count}</span></div>
+			<div><p>￥${(data[i].goods.price/100*data[i].count).toFixed(2)}</p></div>
+			</a>
+		</li>`
+		})
+		$("#listitem").html(str)
+		$("#indexx").html(index);
+	})
+			//注销
 					$(".logout").click(function(){
 						RemoveCookie("username");
 						RemoveCookie("token")
 						window.location.href="index.html"})
-							
-					}
+						}
 	  	})
 	  if($("#chx").prop("checked")==true){
 		  Setcookie("username",user,7)
@@ -70,6 +86,7 @@ $("#login_").click(function(){
 					$(".logout").html(ff);
 					$(".logout").click(function(){
 						RemoveCookie("username")
+						RemoveCookie("token")
 						window.location.href="index.html"
 					})
 			}
@@ -229,10 +246,11 @@ $("#login_").click(function(){
 			$("#navnav_menu").mousemove(function(e){
 				e.stopPropagation();
 				$("#menuitem").find("ul").show();
-				$(this).show()
+				$(this).stop().show()
 			})
-			$("body,html").mousemove(function(){
-				$("#menuitem").find("ul").slideUp();
+			$("body,html").mousemove(function(e){
+				e.stopPropagation()
+				$("#menuitem").find("ul").stop().slideUp();
 				$("#navnav_menu").hide()
 			})
 			
@@ -324,31 +342,6 @@ $("#login_").click(function(){
 			}
 			setInterval(itemtiem,1000)
 			var taken = Getcookie("token")
-	// 侧边栏请求数据 
-	$.get("http://47.104.244.134:8080/cartlist.do",{token:taken},function(data){
-		var str =""
-		console.log(data)
-		var index = data.length
-		$.each(data,function(i){
-			str+=` <li><a href="cart.html">
-			<div><img src="${data[i].goods.picurl}"></div>
-			<div><p>${data[i].goods.name}</p><span>${data[i].count}</span></div>
-			<div><p>￥${(data[i].goods.price/100*data[i].count).toFixed(2)}</p></div>
-			</a>
-		</li>`
-		})
-		$("#listitem").html(str)
-		$("#indexx").html(index);
-	})
-
-
-
-
-
-
-
-
-
-
+	
 	})
 }
