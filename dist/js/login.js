@@ -16,11 +16,16 @@ $(function(){
       var user =  $("#username").val()
       var pad  =  $("#passwrod").val()
         $.post("http://47.104.244.134:8080/userlogin.do",{ name:user,password:pad},function(data){
+            var taken = data.data.token
             data = data.code;
             if(data == 1){
                 $(".error").show();
             }else{
-                window.location.href = 'index.html'
+                Setcookie("username",user)
+                Setcookie("pasd",pad)
+                console.log(user,pad)
+                Setcookie("token",taken)
+                window.location.href = 'index.html?'+taken
             }
         })
         if($("#chx").prop("checked")==true){
@@ -31,4 +36,52 @@ $(function(){
         }
     })
         $("#username").val(Getcookie("username")) 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
 })

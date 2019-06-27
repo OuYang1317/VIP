@@ -4,9 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>唯品会-我的购物袋</title>
     <link rel="stylesheet" href="font_kmche1qr528/iconfont.css">
     <link rel="stylesheet" href="css/cart.css">
-    <title>唯品会-我的购物袋</title>
+    <script src="https://cdn.bootcss.com/jquery/1.11.1/jquery.js"></script>
+    <script src="js/cookie.js"></script>
+    <script src="js/cart.js"></script>
 </head>
 <body>
 <nav>
@@ -17,7 +20,7 @@
         <div class="care_item">
             <div class="tel">
                 <ul>
-                    <li><a href="login.html">登录</a><a href="register.html">注册</a><span>|</span></li>
+                    <li><a id ="idid" href="login.html">登录</a><a id ="logout" href="#">注册</a><span>|</span></li>
                     <li><i class="iconfont icon-shouji1"></i>400-6789-888<span>|</span></li>
                     <li> <i class="iconfont icon-renwu"></i>在线客服<span>|</span></li>
                 </ul>
@@ -51,7 +54,7 @@
                     <li>操作</li>
                 </ul>
                 <ul id ="cart_item">
-                    <li>
+                    <!-- <li>
                         <div><img src="img/64c980b3-f361-4bec-8b4c-93820df1ea69_420x420_90.jpg"/><p>机械师手提笔记本电脑双肩包时尚个性便携商务学生大容量潮酷背包</p></div>
                         <div>￥299</div>
                         <div><h1><span>-</span><input type="text" value="1"><span>+</span></h1></div>
@@ -71,7 +74,7 @@
                                 <div><h1><span>-</span><input type="text" value="1"><span>+</span></h1></div>
                                 <div>￥299</div>
                                 <div><i>删除</i></div>
-                            </li>
+                            </li> -->
                 </ul>
         </div>
         <div class="close_item">
@@ -85,7 +88,7 @@
             <div class="aggregate_close">
                 <div></div>
                 <div>
-                    <p><span>总金额</span><span>￥299</span></p>
+                    <p><span>总金额</span><span class="moke">￥299</span></p>
                 <button>立即结算</button>
             </div>
         </div>

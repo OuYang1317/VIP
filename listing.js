@@ -171,6 +171,7 @@ $(function(){
                }
            }
             var id = location.search.split("?")[1];
+            console.log(id)
            overload(id);
            //页码点击特效
            $(".pagewid").find("li").click(function(){
@@ -237,7 +238,7 @@ $("#login_").click(function(){
 		  if(data == 1){
 			$(".error").show();
 		}else{
-            window.location.href = 'index.html?token='+taken
+            window.location.href = 'listing.html?'+id+'?token='+taken
             Setcookie("username",user)
             Setcookie("pasd",pad)
             Setcookie("token",taken)
@@ -252,6 +253,39 @@ $("#login_").click(function(){
   })
 
 
+  function denglu(){
+    var te = Getcookie("username")
+    var pd = Getcookie("pasd")
+    if(te == undefined && pd ==undefined){
+        return;
+    }
+    $.post("http://47.104.244.134:8080/userlogin.do",{ "name":te,"password":pd},function(data){
+          var strr = "";
+          var str ="";
+          var ff = "";
+          data = data.code;
+          if(data == 1){
+            $(".error").show();
+        }else{
+            console.log("aa")
+            Setcookie("username",te)
+            Setcookie("pasd",pd)
+            str+=`<span class="iconfont icon-renwu"></span>
+                <p><a id="loginn1" href="#">用户  ${te}</a></p>`
+                $(".touxiang").html(str);
+            strr+=`<a href="#" id ="name">欢迎 ${te}</a>`
+                $(".idid").html(strr)
+                ff+=`<a href="#">注销</a>`
+                $(".logout").html(ff);
+                $(".logout").click(function(){
+                    RemoveCookie("username")
+                    RemoveCookie("token")
+                    window.location.href='listing.html?'+id
+                })
+        }
+      })
+}		
+        denglu();
 
 
 

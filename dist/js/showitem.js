@@ -52,12 +52,12 @@ $(function(){
     var id = location.search.split("?")[1];
     $.get("http://47.104.244.134:8080/goodsbyid.do",{id:id},show)
     function show(data){
-        console.log(data)
         if(data.picurl==""){
             data.picurl ="img/replace/"+Math.floor(Math.random()*10)+".jpg"
         }
         var str = ""
-        str+=`<div class="concet_img">
+        var strr = ""
+        str+=`
         <div class="img_big">
             <div class="zoom"></div>
             <img src="${data.picurl}">
@@ -66,27 +66,22 @@ $(function(){
             <ul>
                 <li><img src="${data.picurl}"></li>
             </ul>
-        </div>
-    </div>
-    <div class="conceet_wen">
-        <h2 class="biaoti">${data.name}</h2>
-        <div class="concet_price">
-            <span>￥</span><h3>${data.price/100}</h3><del>${data.price}</del><i>5折</i>
-        </div>
-        <div class="concet_area"><span>配送</span></div>
-        <div class="distribution"><h3>运费</h3><span>免运费</span></div>
-        <div class="concet_option"><h3>颜色</h3>
-            <ul>
-                <li>好吃的</li>
-                <li>不好吃的</li>
-            </ul>
-        </div>
-        <div class="concet_quantity"><h3>数量</h3><div class="quantity_option"><span>-</span><input type="text"value="1"><span>+</span></div></div>
-        <button id="shopping" type="button"><span class="iconfont icon-gouwudai"></span><span>加入购物车</span></button>
-    </div>`
-    $(".concet_item").html(str)
+        </div>`
+      strr+=` <h2 class="biaoti">${data.name}</h2>
+      <div class="concet_price">
+          <span>￥</span><h3>${data.price/100}</h3><del>${data.price}</del><i>5折</i>
+      </div>
+      <div class="concet_area"><span>配送</span></div>
+      <div class="distribution"><h3>运费</h3><span>免运费</span></div>
+      <div class="concet_option"><h3>颜色</h3>
+          <ul>
+              <li>好吃的</li>
+              <li>不好吃的</li>
+          </ul>
+      </div>` 
 
-
+    $(".concet_img").html(str)
+    $("#magess").html(strr)
 //鼠标经过发大
 $(".img_big").mousemove(function(e){
     var _left = $(this).offset().left
@@ -125,19 +120,41 @@ $(".quantity_option").find("span").eq(1).click(function(){
     num++;
     $(".quantity_option").find("input").val(num)
 })
-
-
-
-
-
-
+//加入购物车
+var taken = Getcookie("token")
+ $("#shopping").click(function(){
+	for(var i = 0;i<$("#suno").val();i++){
+		$.get("http://47.104.244.134:8080/cartsave.do",{gid:id,token:taken},function(data){
+     })
+}
+     alert("成功");
+})
 
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
  
-
-
 
 //回到顶部
 $("#top").click(function(){
@@ -145,7 +162,79 @@ $("#top").click(function(){
 });
 
 
+//用户验证&记住用户名
+$("#login_").click(function(){
+	var user =  $("#usen").val();
+	var pad  =  $("#mim").val();
+	var strr = "";
+	var str ="";
+	var ff = "";
+	  $.post("http://47.104.244.134:8080/userlogin.do",{ "name":user,"password":pad},function(data){
+		var taken = data.data.token
+		data = data.code;
+		console.log("aa")
+		  if(data == 1){
+			$(".error").show();
+		}else{
+			$("#zhzhao").hide();
+            Setcookie("username",user)
+			Setcookie("pasd",pad)
+			console.log(user,pad)
+			Setcookie("token",taken)
+			str+=`<span class="iconfont icon-renwu"></span><p><a id="loginn1" href="#">用户  ${user}</a></p>`
+					$(".touxiang").html(str);
+				strr+=`<a href="#" id ="name">欢迎 ${user}</a>`
+					$(".idid").html(strr)
+					ff+=`<a href="#">注销</a>`
+					$(".logout").html(ff);
+					$(".logout").click(function(){RemoveCookie("username");window.location.href="index.html"})
+		}
+	  })
+	  if($("#chx").prop("checked")==true){
+		  Setcookie("username",user,7)
+	  }
+	  if($("#chx").prop("checked")==false){
+		  RemoveCookie("username")
+	  }
+	  })
+	  //取值
+	  $("#username").val(Getcookie("username")) 
 
+
+
+
+	  function denglu(){
+		var te = Getcookie("username")
+		var pd = Getcookie("pasd")
+		if(te == undefined && pd ==undefined){
+			return;
+		}
+		$.post("http://47.104.244.134:8080/userlogin.do",{ "name":te,"password":pd},function(data){
+			  var strr = "";
+			  var str ="";
+			  var ff = "";
+			  data = data.code;
+			  if(data == 1){
+				$(".error").show();
+			}else{
+				console.log("aa")
+				Setcookie("username",te)
+				Setcookie("pasd",pd)
+				str+=`<span class="iconfont icon-renwu"></span>
+					<p><a id="loginn1" href="#">用户  ${te}</a></p>`
+					$(".touxiang").html(str);
+				strr+=`<a href="#" id ="name">欢迎 ${te}</a>`
+					$(".idid").html(strr)
+					ff+=`<a href="#">注销</a>`
+					$(".logout").html(ff);
+					$(".logout").click(function(){
+						RemoveCookie("username")
+						window.location.href="index.html"
+					})
+			}
+		  })
+	}		
+			denglu();
 
 
 

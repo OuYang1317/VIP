@@ -1,4 +1,90 @@
 window.onload=function(){
+//用户验证&记住用户名
+$("#login_").click(function(){
+	var user =  $("#usen").val();
+	var pad  =  $("#mim").val();
+	var strr = "";
+	var str ="";
+	var ff = "";
+	  $.post("http://47.104.244.134:8080/userlogin.do",{ "name":user,"password":pad},function(data){
+		taken = data.data.token
+		data = data.code;
+		  if(data == 1){
+			$(".error").show();
+		}else{
+			$("#zhzhao").hide();
+            Setcookie("username",user,"/")
+			Setcookie("pasd",pad,"/")
+			console.log(user,pad,"/")
+			Setcookie("token",taken)
+			str+=`<span class="iconfont icon-renwu"></span><p><a id="loginn1" href="#">用户  ${user}</a></p>`
+					$(".touxiang").html(str);
+				strr+=`<a href="#" id ="name">欢迎 ${user}</a>`
+					$(".idid").html(strr)
+					ff+=`<a href="#">注销</a>`
+					$(".logout").html(ff);
+					$(".logout").click(function(){
+						RemoveCookie("username");
+						RemoveCookie("token")
+						window.location.href="index.html"})
+		}
+	  })
+	  if($("#chx").prop("checked")==true){
+		  Setcookie("username",user,7)
+	  }
+	  if($("#chx").prop("checked")==false){
+		  RemoveCookie("username")
+	  }
+	  })
+	  //取值
+	  $("#username").val(Getcookie("username")) 
+
+
+
+
+	  function denglu(){
+		var te = Getcookie("username")
+		var pd = Getcookie("pasd")
+		if(te == undefined && pd ==undefined){
+			return;
+		}
+		$.post("http://47.104.244.134:8080/userlogin.do",{ "name":te,"password":pd},function(data){
+			  var strr = "";
+			  var str ="";
+			  var ff = "";
+			  data = data.code;
+			  if(data == 1){
+				$(".error").show();
+			}else{
+				console.log("aa")
+				Setcookie("username",te)
+				Setcookie("pasd",pd)
+				str+=`<span class="iconfont icon-renwu"></span>
+					<p><a id="loginn1" href="#">用户  ${te}</a></p>`
+					$(".touxiang").html(str);
+				strr+=`<a href="#" id ="name">欢迎 ${te}</a>`
+					$(".idid").html(strr)
+					ff+=`<a href="#">注销</a>`
+					$(".logout").html(ff);
+					$(".logout").click(function(){
+						RemoveCookie("username")
+						window.location.href="index.html"
+					})
+			}
+		  })
+	}		
+			denglu();
+
+
+
+
+
+
+
+
+
+
+
 	//回到顶部
 	$(function(){
 		$("#top").click(function(){
@@ -31,7 +117,6 @@ window.onload=function(){
 							var index = $(this).index()
 							clearInterval(timer)
 							$('#bannerimg').find("li").eq(index).stop().fadeIn().siblings().stop().fadeOut()
-							console.log(index)
 								$("#tiao").stop().animate({'left':354+index*232+"px"})
 							})
 						$(this).mouseleave(function(){
@@ -239,69 +324,7 @@ window.onload=function(){
 					$(".timerr").html(sss)
 			}
 			setInterval(itemtiem,1000)
-				
-//用户验证&记住用户名
-$("#login_").click(function(){
-	var user =  $("#usen").val();
-	var pad  =  $("#mim").val();
-	  $.post("http://47.104.244.134:8080/userlogin.do",{ "name":user,"password":pad},function(data){
-		  var taken = data.data.token
-		console.log(data)
-		  data = data.code;
-		  if(data == 1){
-			$(".error").show();
-		}else{
-			window.location.href = 'index.html?token='+taken
-            Setcookie("username",user)
-            Setcookie("pasd",pad)
-            Setcookie("token",taken)
-		}
-	  })
-	  if($("#chx").prop("checked")==true){
-		  Setcookie("username",user,7)
-	  }
-	  if($("#chx").prop("checked")==false){
-		  RemoveCookie("username")
-	  }
-	  })
-	  //取值
-	  $("#username").val(Getcookie("username")) 
 
-
-
-
-	  function denglu(){
-		var te = Getcookie("username")
-		var pd = Getcookie("pasd")
-		if(te == undefined && pd ==undefined){
-			return;
-		}
-		$.post("http://47.104.244.134:8080/userlogin.do",{ "name":te,"password":pd},function(data){
-			  var strr = "";
-			  var str =""
-			  var ff = ""
-			  data = data.code;
-			  if(data == 1){
-				$(".error").show();
-			}else{
-				console.log("aa")
-				Setcookie("username",te)
-				Setcookie("pasd",pd)
-				str+=`<span class="iconfont icon-renwu"></span>
-					<p><a id="loginn1" href="#">用户  ${te}</a></p>`
-					$(".touxiang").html(str);
-				strr+=`<a href="#" id ="name">欢迎 ${te}</a>`
-					$(".idid").html(strr)
-					ff+=`<a href="#">注销</a>`
-					$(".logout").html(ff);
-					$(".logout").click(function(){
-						RemoveCookie("username")
-						window.location.href="index.html"
-					})
-			}
-		  })
-	}		
-			denglu();
 
 
 
