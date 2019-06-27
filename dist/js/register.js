@@ -2,6 +2,7 @@ $(function(){
     //判断用户名是否重复
    $(".uresename").find("input").change(function(){
         var user = $(this).val()//0是失败 已经重名了
+				
         $.get("http://47.104.244.134:8080/username.do",{username:user},function(data){
             data = data.code
             if(data == 0){
@@ -72,8 +73,18 @@ $(".yanzhengpsd").find('input').change(function(){
     }
 })
 
+
+
+
 //协议判断加上传
 $("#zhuce").click(function(){
+    $(".inputt").find("div").find("input").each(function(){
+        var index  =$(this).parent().index();
+        if($(this).val()==""){
+            alert("不能为空");
+                return  
+        }
+    })
     if($(".xieyi").find("input").prop("checked") == false){
         $(".tiaokuan").css({"opacity":1})
         return;

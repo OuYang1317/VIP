@@ -38,7 +38,7 @@
                 </div>
             </div>
             </li>
-            <li class="logout"><a href="#">注册</a></li>
+            <li class="logout"><a href="register.html">注册</a></li>
             <li><a href="#">签到有礼</a></li>
             <li><a href="#">我的订单</a></li>
             <li><a href="#">我的特卖 <span></span></a>
@@ -480,65 +480,80 @@
 </footer>
 <!-- 弹窗 -->
 <div id="zhzhao">
-    <div class="denglu">
-        <span class="cloes">X</span>
-        <h1><p class="sam" >扫码登录</span><span>|</span><p class="zhd"style="color: #F10180">账号登录</p></h1>
-        <div id="saoma">
-            <div><img src="img/getQrImage.png"></div>
-            <p>打开<b>唯品会APP-个人中心</b>，扫一扫登录</p>
-        </div>
-        <div id="zhanghu">
-            <form  action="">
-                <div class="uresname">
-                    <span class="iconfont icon-renwu"></span><input type="text">
-                </div>
-                <div class="pasd">
-                    <span class="iconfont icon-suo"></span><input type="text">
-                </div>
-                <div class="chec"><h3><input type="checkbox" />记住密码</h3> <p><a href="#">忘记密码</a></p></div>
-                <input type="button" value="登录">
-            </form>
-            <div class="weixin"><p></p><span class="iconfont icon-weixin"></span><p></p></div>
-            <div class="denglufangshi"><ul>
-                    <li>新浪微博<span>|</span></li>
-                    <li>QQ<span>|</span></li>
-                    <li>支付宝</li>
-                    </ul>
-                    <h4 class="dian1">更多</h4>
-                    <h4 class="dian2">收起</h4>
-                    <h3><a href="#"></a>免费注册</h3>
+        <div class="denglu">
+            <span class="cloes">X</span>
+            <h1><p class="sam" >扫码登录</p><span>|</span><p class="zhd"style="color: #F10180">账号登录</p></h1>
+            <div id="saoma">
+                <div><img src="img/getQrImage.png"></div>
+                <p>打开<b>唯品会APP-个人中心</b>，扫一扫登录</p>
             </div>
+            <div id="zhanghu">
+                    <div class="uresname">
+                        <span class="iconfont icon-renwu"></span><input id = "usen"type="text">
+                    </div>
+                    <div class="pasd">
+                        <span class="iconfont icon-suo"></span><input id ="mim" type="text">
+                    </div>
+                    <p class="error">账号或密码错误，请重试</p>
+                    <div class="chec"><h3><input id="chx" type="checkbox" />记住密码</h3> <p><a href="#">忘记密码</a></p></div>
+                    <input id="login_" type="button" value="登录">
+                <div class="weixin"><p></p><span class="iconfont icon-weixin"></span><p></p></div>
+                <div class="denglufangshi"><ul>
+                        <li>新浪微博<span>|</span></li>
+                        <li>QQ<span>|</span></li>
+                        <li>支付宝</li>
+                        </ul>
+                        <h4 class="dian1">更多</h4>
+                        <h4 class="dian2">收起</h4>
+                        <h3><a href="register.html">免费注册</a></h3>
+                </div>
+            </div>
+            
+            
+            <div class="denglufangshi"><ul>
+                <li>新浪微博<span>|</span></li>
+                <li>QQ<span>|</span></li>
+                <li>支付宝</li>
+                </ul>
+                <h4 class="dian1">更多</h4>
+                <h4 class="dian2">收起</h4>
+                <h3><a href="#"></a>免费注册</h3>
         </div>
-        
-        
-        <div class="denglufangshi"><ul>
-            <li>新浪微博<span>|</span></li>
-            <li>QQ<span>|</span></li>
-            <li>支付宝</li>
+        <ul>
+                <li>网易<span>|</span></li>
+                <li>人人网<span>|</span></li>
+                <li>建行登录<span>|</span></li>
+                <li>开心网<span>|</span></li>
+                <li>中国移动</li>
+                <li>翼支付</li>
             </ul>
-            <h4 class="dian1">更多</h4>
-            <h4 class="dian2">收起</h4>
-            <h3><a href="#"></a>免费注册</h3>
+        </div>
+    <!-- //侧边栏 -->
     </div>
-    <ul>
-            <li>网易<span>|</span></li>
-            <li>人人网<span>|</span></li>
-            <li>建行登录<span>|</span></li>
-            <li>开心网<span>|</span></li>
-            <li>中国移动</li>
-            <li>翼支付</li>
+
+<!-- 侧边栏 弹窗 -->
+<div class="smlas">
+        <div><i class="iconfont icon-renwu"></i></div>
+        <p class="ning">你好 <a href="login.html">请登录一下吧</a></p>
+        <p class="nnlk"><span>我的订单</span><span>我的消息</span></p>
+    </div>
+    <div class="big">
+        <div id = "gou">购物袋</div>
+        <ul id ="listitem">
+            
         </ul>
+        <p id ="mi">直接结账</p>
     </div>
-</div>
+<!-- 侧边 -->
 <div class="rightitem">
         <ul>
-            <li><div>我的优惠券</div><span class="iconfont icon-renwu"></spanc><p>账号</p></li>
-            <li><span class="iconfont icon-gouwudai"></span><p>购物袋</p><i>0</i></li>
+            <li  id ="ttx"><span class="iconfont icon-renwu"></spanc><p>账号</p></li>
+            <li id = "clickk"><span class="iconfont icon-gouwudai"></span><p>购物袋</p><i id="indexx">0</i></li>
             <li><div>我的优惠券</div><span class="iconfont icon-youhui"></span></li>
             <li><div>品牌收藏</div><span class="iconfont icon-xin"></span></li>
             <li><div>商品收藏</div><span class="iconfont icon-xingxing"></span></li>
             <li><div>我的足迹</div><span class="iconfont icon-zuji"></span></li> 
-            <li><div>会员反馈</div><span class="iconfont icon-qianbi"></span></li>   
+            <li  id = "viop"><div>会员反馈</div><span class="iconfont icon-qianbi"></span></li>   
             <li id="top"><div>回到顶部</div><span class="iconfont icon-chevron-copy-copy-copy-copy-copy-copy"></span></li>
         </u
 </body> 

@@ -131,8 +131,62 @@ var taken = Getcookie("token")
 })
 
 }
+//点击事件合集
+$(".cloes").click(function(){
+	$("#zhzhao").hide();
+})
+
+$("#loginn1").click(function(){
+	$("#zhzhao").show();
+})
+var taken = Getcookie("token")
+$("#clickk").click(function(e){
+	e.stopPropagation()
+	$(".big").animate({"width":300},"slow")
+})
+$("body,html").click(function(){
+	$(".big").animate({"width":0},"slow")
+})
+$("#ttx").mouseenter(function(){
+	$(".smlas").animate({"width":300},"slow")
+})
+$(".smlas").mouseleave(function(){
+	$(this).animate({"width":0},"slow")
+})
+$("#loginn1").click(function(){
+	$("#zhzhao").show();
+})
+	$(".sam").click(function(){
+	$(this).css({"color":"#F10180"})
+	$(".zhd").css({"color":"#666"})
+	$("#saoma").show();
+	$("#zhanghu").hide();
+})
+$(".zhd").click(function(){
+	$(this).css({"color":"#F10180"})
+	$(".sam").css({"color":"#666"})
+	$("#saoma").hide();
+	$("#zhanghu").show();
+})
 
 
+
+// 侧边栏请求数据 
+$.get("http://47.104.244.134:8080/cartlist.do",{token:taken},function(data){
+	var str =""
+	console.log(data)
+	var index = data.length
+	$.each(data,function(i){
+		str+=` <li><a href="cart.html">
+		<div><img src="${data[i].goods.picurl}"></div>
+		<div><p>${data[i].goods.name}</p><span>${data[i].count}</span></div>
+		<div><p>￥${(data[i].goods.price/100*data[i].count).toFixed(2)}</p></div>
+		</a>
+	</li>`
+	})
+	$("#listitem").html(str)
+	$("#indexx").html(index);
+})
 
 
 

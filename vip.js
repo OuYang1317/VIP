@@ -6,16 +6,16 @@ $("#login_").click(function(){
 	var strr = "";
 	var str ="";
 	var ff = "";
+	var ssd =""
 	  $.post("http://47.104.244.134:8080/userlogin.do",{ "name":user,"password":pad},function(data){
 		taken = data.data.token
 		data = data.code;
 		  if(data == 1){
-			$(".error").show();
+			$("#error1").show();
 		}else{
 			$("#zhzhao").hide();
-            Setcookie("username",user,"/")
-			Setcookie("pasd",pad,"/")
-			console.log(user,pad,"/")
+            Setcookie("username",user,)
+			Setcookie("pasd",pad,)
 			Setcookie("token",taken)
 			str+=`<span class="iconfont icon-renwu"></span><p><a id="loginn1" href="#">用户  ${user}</a></p>`
 					$(".touxiang").html(str);
@@ -23,12 +23,15 @@ $("#login_").click(function(){
 					$(".idid").html(strr)
 					ff+=`<a href="#">注销</a>`
 					$(".logout").html(ff);
+				ssd+=`你好 <a href='#'> ${user}</a>`
+					$(".ning").html(ssd)
 					$(".logout").click(function(){
 						RemoveCookie("username");
 						RemoveCookie("token")
 						window.location.href="index.html"})
-		}
-	  })
+							
+					}
+	  	})
 	  if($("#chx").prop("checked")==true){
 		  Setcookie("username",user,7)
 	  }
@@ -38,10 +41,6 @@ $("#login_").click(function(){
 	  })
 	  //取值
 	  $("#username").val(Getcookie("username")) 
-
-
-
-
 	  function denglu(){
 		var te = Getcookie("username")
 		var pd = Getcookie("pasd")
@@ -52,6 +51,7 @@ $("#login_").click(function(){
 			  var strr = "";
 			  var str ="";
 			  var ff = "";
+			  var ssd=""
 			  data = data.code;
 			  if(data == 1){
 				$(".error").show();
@@ -65,6 +65,8 @@ $("#login_").click(function(){
 				strr+=`<a href="#" id ="name">欢迎 ${te}</a>`
 					$(".idid").html(strr)
 					ff+=`<a href="#">注销</a>`
+					ssd+=`你好 <a href='#'> ${te}</a>`
+					$(".ning").html(ssd)
 					$(".logout").html(ff);
 					$(".logout").click(function(){
 						RemoveCookie("username")
@@ -73,18 +75,7 @@ $("#login_").click(function(){
 			}
 		  })
 	}		
-			denglu();
-
-
-
-
-
-
-
-
-
-
-
+	denglu();
 	//回到顶部
 	$(function(){
 		$("#top").click(function(){
@@ -270,8 +261,6 @@ $("#login_").click(function(){
 					flag = true
 				})
 			})
-
-
 			//更多点击收起
 			// $(".dian1").click(function(){
 			// 	$(".denglu").css({'height':'500px'});
@@ -282,7 +271,19 @@ $("#login_").click(function(){
 			// 	$(this).hide();
 			// 	$(".dian1").show();
 			// })
-			
+			$("#clickk").click(function(e){
+				e.stopPropagation()
+				$(".big").animate({"width":300},"slow")
+			})
+			$("body,html").click(function(){
+				$(".big").animate({"width":0},"slow")
+			})
+			$("#ttx").mouseenter(function(){
+				$(".smlas").animate({"width":300},"slow")
+			})
+			$(".smlas").mouseleave(function(){
+				$(this).animate({"width":0},"slow")
+			})
 			$(".cloes").click(function(){
 				$("#zhzhao").hide();
 			})
@@ -290,8 +291,6 @@ $("#login_").click(function(){
 			$("#loginn1").click(function(){
 				$("#zhzhao").show();
 			})
- 
-
 				$(".sam").click(function(){
 				$(this).css({"color":"#F10180"})
 				$(".zhd").css({"color":"#666"})
@@ -324,8 +323,23 @@ $("#login_").click(function(){
 					$(".timerr").html(sss)
 			}
 			setInterval(itemtiem,1000)
-
-
+			var taken = Getcookie("token")
+	// 侧边栏请求数据 
+	$.get("http://47.104.244.134:8080/cartlist.do",{token:taken},function(data){
+		var str =""
+		console.log(data)
+		var index = data.length
+		$.each(data,function(i){
+			str+=` <li><a href="cart.html">
+			<div><img src="${data[i].goods.picurl}"></div>
+			<div><p>${data[i].goods.name}</p><span>${data[i].count}</span></div>
+			<div><p>￥${(data[i].goods.price/100*data[i].count).toFixed(2)}</p></div>
+			</a>
+		</li>`
+		})
+		$("#listitem").html(str)
+		$("#indexx").html(index);
+	})
 
 
 
