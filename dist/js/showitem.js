@@ -1,60 +1,60 @@
 $(function(){
-// 	$("#login_").click(function(){
-// 		console.log("aa")
-// 		var user =  $("#usen").val();
-// 		var pad  =  $("#mim").val();
-// 		var strr = "";
-// 		var str ="";
-// 		var ff = "";
-// 		var ssd =""
-// 		  $.post("http://47.104.244.134:8080/userlogin.do",{ "name":user,"password":pad},function(data){
-// 			var da = data
-// 			data = data.code;
-// 			  if(data == 1){
-// 				$("#error1").show(); 
-// 			}else{
-// 				var taken = da.data.token
-// 				$("#zhzhao").hide();
-// 				Setcookie("username",user,)
-// 				Setcookie("pasd",pad,)
-// 				Setcookie("token",taken)
-// 				str+=`<span class="iconfont icon-renwu"></span><p><a id="loginn1" href="#">用户  ${user}</a></p>`
-// 						$(".touxiang").html(str);
-// 					strr+=`<a href="#" id ="name">欢迎 ${user}</a>`
-// 						$(".idid").html(strr)
-// 						ff+=`<a href="#">注销</a>`
-// 						$(".logout").html(ff);
-// 					ssd+=`你好 <a href='#'> ${user}</a>`
-// 						$(".ning").html(ssd)
-// 						// 侧边栏请求数据
-// 		$.get("http://47.104.244.134:8080/cartlist.do",{token:taken},function(data){
-// 			var str =""
-// 			var index = data.length
-// 			$.each(data,function(i){
-// 				str+=` <li><a href="cart.html">
-// 				<div><img src="${data[i].goods.picurl}"></div>
-// 				<div><p>${data[i].goods.name}</p><span>${data[i].count}</span></div>
-// 				<div><p>￥${(data[i].goods.price/100*data[i].count).toFixed(2)}</p></div>
-// 				</a>
-// 			</li>`
-// 			})
-// 			$("#listitem").html(str)
-// 			$("#indexx").html(index);
-// 		})
-// 				//注销
-// 						$(".logout").click(function(){
-// 							RemoveCookie("username");
-// 							RemoveCookie("token")
-// 							window.location.href="showitem.html"})
-// 							}
-// 			  })
-// 		  if($("#chx").prop("checked")==true){
-// 			  Setcookie("username",user,7)
-// 		  }
-// 		  if($("#chx").prop("checked")==false){
-// 			  RemoveCookie("username")
-// 		  }
-// })
+	$("#login_").click(function(){
+		console.log("aa")
+		var user =  $("#usen").val();
+		var pad  =  $("#mim").val();
+		var strr = "";
+		var str ="";
+		var ff = "";
+		var ssd =""
+		  $.post("http://47.104.244.134:8080/userlogin.do",{ "name":user,"password":pad},function(data){
+			var da = data
+			data = data.code;
+			  if(data == 1){
+				$(".error").show(); 
+			}else{
+				var taken = da.data.token
+				$("#zhzhao").hide();
+				Setcookie("username",user,)
+				Setcookie("pasd",pad,)
+				Setcookie("token",taken)
+				str+=`<span class="iconfont icon-renwu"></span><p><a id="loginn1" href="#">用户  ${user}</a></p>`
+						$(".touxiang").html(str);
+					strr+=`<a href="#" id ="name">欢迎 ${user}</a>`
+						$(".idid").html(strr)
+						ff+=`<a href="#">注销</a>`
+						$(".logout").html(ff);
+					ssd+=`你好 <a href='#'> ${user}</a>`
+						$(".ning").html(ssd)
+						// 侧边栏请求数据
+		$.get("http://47.104.244.134:8080/cartlist.do",{token:taken},function(data){
+			var str =""
+			var index = data.length
+			$.each(data,function(i){
+				str+=` <li><a href="cart.html">
+				<div><img src="${data[i].goods.picurl}"></div>
+				<div><p>${data[i].goods.name}</p><span>${data[i].count}</span></div>
+				<div><p>￥${(data[i].goods.price/100*data[i].count).toFixed(2)}</p></div>
+				</a>
+			</li>`
+			})
+			$("#listitem").html(str)
+			$("#indexx").html(index);
+		})
+				//注销
+						$(".logout").click(function(){
+							RemoveCookie("username");
+							RemoveCookie("token")
+							window.location.href="showitem.html"})
+							}
+			  })
+		  if($("#chx").prop("checked")==true){
+			  Setcookie("username",user,7)
+		  }
+		  if($("#chx").prop("checked")==false){
+			  RemoveCookie("username")
+		  }
+})
     		//二级导航 接口
 			$.get("http://47.104.244.134:8080/goodstypelist.do",{l:1},function(data){
 				var str = "";
@@ -296,6 +296,8 @@ $("#login_").click(function(){
 	var taken = Getcookie("token")
 	for(var i = 0;i<$("#suno").val();i++){$.get("http://47.104.244.134:8080/cartsave.do",{gid:id,token:taken},function(data){})}
 	alert("成功");
+
+	
 }
 })
 }
@@ -336,7 +338,7 @@ $(".zhd").click(function(){
 	$("#saoma").hide();
 	$("#zhanghu").show();
 })
-
+ 
 
 
 // 侧边栏请求数据 

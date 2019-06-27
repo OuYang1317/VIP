@@ -28,17 +28,22 @@ $(function(){
             var str = "";
             var taken = Getcookie("token")
             if(taken == undefined){
-            str+=`<li id = "goto">快去购物吧</li>`
+            str+=`<li id = "goto"><a herf="index.html">点我  Let's 购 !!! </a></li>`
             $("#cart_item").html(str)
             }else{
                 $.get("http://47.104.244.134:8080/cartlist.do",{token:taken},Cart)
             }
             function Cart(data) {
+                if(data.length == 0){
+                    str+=`<li id = "goto"><a herf="index.html">点我  Let's 购 !!! </a></li>`
+                    $("#cart_item").html(str)
+                    return
+                }
                 $.each(data,function(i){
                     str+=` <li goods-id="${data[i].goods.id}">
                     <div><img src="${data[i].goods.picurl}"/><p>${data[i].goods.name}</p></div>
                     <div class = "price">￥${data[i].goods.price/100}</div>
-                    <div id = "cartt"><h1 data-id="${data[i].id}" goods-id="${data[i].goods.id}"><span class= "down">-</span><input id="summ" type="text" value="${data[i].count}"><span class ="up">+</span></h1></div>
+                    <div class = "cartt"><h1 data-id="${data[i].id}" goods-id="${data[i].goods.id}"><span class= "down">-</span><input id="summ" type="text" value="${data[i].count}"><span class ="up">+</span></h1></div>
                     <div class = "aggregate_money">￥${(data[i].goods.price/100*data[i].count).toFixed(2)}</div>
                     <div class="dedel"><i data-id="${data[i].id}" goods-id="${data[i].goods.id}">删除</i></div>
                     </li>`
@@ -99,8 +104,8 @@ $(function(){
                     $(".moke").text("￥"+sum.toFixed(2))
 
                 })
-
-                $("#cartt").find("input").focus(function(){
+                console.log( $(".cartt").find("input"))
+                $(".cartt").find("input").focus(function(){
                     console.log("aa")
                     var bn = $(this).val()
                     $(this).blur(function(){
@@ -150,6 +155,7 @@ $(function(){
             //形象改变
             function alter(id,goid,num,taken){
                 $.get("http://47.104.244.134:8080/cartupdate.do",{id:id,gid:goid,num:num,token:taken},function(data){})
+                location.reload()
             }
 
 
@@ -161,6 +167,7 @@ $(function(){
                 $(".message_").find("b").text("￥"+sum.toFixed(2))
                 $(".moke").text("￥"+sum.toFixed(2))
                 $("#li").text(ber)
+                
             }
 
     }
