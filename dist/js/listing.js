@@ -158,7 +158,7 @@ $(function(){
                     if(data[sum].picurl == ""){
                         data[sum].picurl = "img/replace/"+Math.floor(Math.random()*10)+".jpg";
                     }
-                        str+=`<a href="showitem.html?${data[sum].id}" data-id="${data[sum].id}"><dl>
+                        str+=`<a href="showitem.html?${data[sum].id}" data-id="${data[sum].id}"target="_blank"><dl>
                         <dt><img src="${data[sum].picurl}"></dt>
                         <dd>
                             <h1><b>￥</b><span>${data[sum].price/100}</span></h1>

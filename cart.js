@@ -24,40 +24,113 @@ $(function(){
 			    }
 		  })
 	}		
-denglu();
-var str = "";
-var taken = Getcookie("token")
-    if(taken == undefined){
-      str+=`<li id = "goto">快去购物吧</li>`
-      $("#cart_item").html(str)
-    }else{
-        $.get("http://47.104.244.134:8080/cartlist.do",{token:taken},Cart)
-    }
-    function Cart(data) {
-        var stt = ""
-        console.log(data)
-         console.log(data)
-        $.each(data,function(i){
-            str+=` <li goods-id="${data[i].goods.id}">
-            <div><img src="${data[i].goods.picurl}"/><p>${data[i].goods.name}</p></div>
-            <div>￥${data[i].goods.price/100}</div>
-            <div><h1><span>-</span><input id="summ" type="text" value="${data[i].count}"><span>+</span></h1></div>
-            <div class = "aggregate_money">￥${(data[i].goods.price/100*data[i].count).toFixed(2)}</div>
-            <div class="dedel"><i data-id="${data[i].id}" goods-id="${data[i].goods.id}">删除</i></div>
-                </li>`
-        })
-        $("#cart_item").html(str)
-        var sum = 0;
-        $("#cart_item").find(".aggregate_money").each(function(){
-            sum += Number($(this).html().split("￥")[1])
-        })
-        $(".message_").find("b").text("￥"+sum.toFixed(2))
-        $(".dedel").find("i").click(function(){
-                var id   = $(this).attr("data-id")
-                var goid = $(this).attr("goods-id")
-                $(this).parents("li").remove();
-            $.get("http://47.104.244.134:8080/cartupdate.do",{id:id,gid:goid,num:0,token:taken},function(data){})  
-        })
+            denglu();
+            var str = "";
+            var taken = Getcookie("token")
+            if(taken == undefined){
+            str+=`<li id = "goto">快去购物吧</li>`
+            $("#cart_item").html(str)
+            }else{
+                $.get("http://47.104.244.134:8080/cartlist.do",{token:taken},Cart)
+            }
+            function Cart(data) {
+                $.each(data,function(i){
+                    str+=` <li goods-id="${data[i].goods.id}">
+                    <div><img src="${data[i].goods.picurl}"/><p>${data[i].goods.name}</p></div>
+                    <div class = "price">￥${data[i].goods.price/100}</div>
+                    <div><h1 data-id="${data[i].id}" goods-id="${data[i].goods.id}"><span class= "down">-</span><input id="summ" type="text" value="${data[i].count}"><span class ="up">+</span></h1></div>
+                    <div class = "aggregate_money">￥${(data[i].goods.price/100*data[i].count).toFixed(2)}</div>
+                    <div class="dedel"><i data-id="${data[i].id}" goods-id="${data[i].goods.id}">删除</i></div>
+                    </li>`
+                })
+                $("#cart_item").html(str)
+                    var sum = 0;
+                    $("#cart_item").find(".aggregate_money").each(function(){
+                        sum += Number($(this).html().split("￥")[1])
+                    })
+                        var ber = $("#cart_item").find("li").length
+                        $(".message_").find("b").text("￥"+sum.toFixed(2))
+                        $(".moke").text("￥"+sum.toFixed(2))
+                        $("#li").text(ber)
+                $(".dedel").find("i").click(function(){
+                        var id   = $(this).attr("data-id")
+                        var goid = $(this).attr("goods-id")
+                        $(this).parents("li").remove();
+                        alter(id,goid,0,taken)
+                        var sum = 0;
+                        $("#cart_item").find(".aggregate_money").each(function(){sum += Number($(this).html().split("￥")[1])})
+                        var ber = $("#cart_item").find("li").length
+                        $(".message_").find("b").text("￥"+sum.toFixed(2))
+                        $(".moke").text("￥"+sum.toFixed(2))
+                        $("#li").text(ber)
+                })
+                $(".down").click(function(){
+                    var a = -1;
+                    var id   = $(this).parent().attr("data-id")
+                    var goid = $(this).parent().attr("goods-id")
+                    if(Number($(this).parent().find("#summ").val()) == 1 ){return}
+                    var price = $(this).parents("li").find(".price").html().split("￥")[1]
+                    var numm = Number($(this).parent().find("#summ").val())+a
+                    $(this).parent().find("#summ").val(numm)
+                    alter(id,goid,a,taken);
+                    console.log(price,numm)
+                    $(this).parents("li").find(".aggregate_money").text("￥"+(numm*price).toFixed(2))
+                    var sum = 0;
+                    $("#cart_item").find(".aggregate_money").each(function(){
+                        sum += Number($(this).html().split("￥")[1])
+                    })
+                    $(".message_").find("b").text("￥"+sum.toFixed(2))
+                    $(".moke").text("￥"+sum.toFixed(2))
+                })
+
+                $(".up").click(function(){
+                    var a = 1;
+                    var id   = $(this).parent().attr("data-id")
+                    var goid = $(this).parent().attr("goods-id")
+                    var price = $(this).parents("li").find(".price").html().split("￥")[1]
+                    var numm = Number($(this).parent().find("#summ").val())+a
+                    $(this).parent().find("#summ").val(numm)
+                    alter(id,goid,a,taken)
+                    $(this).parents("li").find(".aggregate_money").text("￥"+(numm*price).toFixed(2))
+                    var sum = 0;
+                    $("#cart_item").find(".aggregate_money").each(function(){
+                        sum += Number($(this).html().split("￥")[1])
+                    })
+                    $(".message_").find("b").text("￥"+sum.toFixed(2))
+                    $(".moke").text("￥"+sum.toFixed(2))
+
+                })
+
+
+
+
+
+
+
+
+
+
+            
+
+
+
+
+            //形象改变
+            function alter(id,goid,num,taken){
+                $.get("http://47.104.244.134:8080/cartupdate.do",{id:id,gid:goid,num:num,token:taken},function(data){})
+            }
+
+
+
+            //统计学
+            function statistics(){
+                var sum = 0;
+                var ber = $("#cart_item").find("li").length
+                $(".message_").find("b").text("￥"+sum.toFixed(2))
+                $(".moke").text("￥"+sum.toFixed(2))
+                $("#li").text(ber)
+            }
+
     }
 
 
