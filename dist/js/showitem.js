@@ -31,6 +31,9 @@ $(function(){
 			var str =""
 			var index = data.length
 			$.each(data,function(i){
+				if(data[i].goods.picurl == ""){
+                        data[i].goods.picurl = "img/replace/"+Math.floor(Math.random()*10)+".jpg";
+                    }
 				str+=` <li><a href="cart.html">
 				<div><img src="${data[i].goods.picurl}"></div>
 				<div><p>${data[i].goods.name}</p><span>${data[i].count}</span></div>
@@ -205,87 +208,22 @@ $("#login_").click(function(){
 					$(".logout").html(ff);
 				ssd+=`你好 <a href='#'> ${user}</a>`
 					$(".ning").html(ssd)
-					// 侧边栏请求数据
-	$.get("http://47.104.244.134:8080/cartlist.do",{token:taken},function(data){
-		var str =""
-		var index = data.length
-		$.each(data,function(i){
-			str+=` <li><a href="cart.html">
-			<div><img src="${data[i].goods.picurl}"></div>
-			<div><p>${data[i].goods.name}</p><span>${data[i].count}</span></div>
-			<div><p>￥${(data[i].goods.price/100*data[i].count).toFixed(2)}</p></div>
-			</a>
-		</li>`
-		})
-		$("#listitem").html(str)
-		$("#indexx").html(index);
-	})
+			
 			//注销
 			$(".logout").click(function(){
 					RemoveCookie("username");
 						RemoveCookie("token")
 						window.location.href="showitem.html"})
 						 	}
-		  })
-	  if($("#chx").prop("checked")==true){
-		  Setcookie("username",user,7)
-	  }
-	  if($("#chx").prop("checked")==false){
-		  RemoveCookie("username")
-	  }
+				  })
+			  if($("#chx").prop("checked")==true){
+				  Setcookie("username",user,7)
+			  }
+			  if($("#chx").prop("checked")==false){
+				  RemoveCookie("username")
+			  }
+
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
  $("#shopping").click(function(){
 	if(Getcookie("token") == undefined){
@@ -296,7 +234,24 @@ $("#login_").click(function(){
 	var taken = Getcookie("token")
 	for(var i = 0;i<$("#suno").val();i++){$.get("http://47.104.244.134:8080/cartsave.do",{gid:id,token:taken},function(data){})}
 	alert("成功");
-
+		// 侧边栏请求数据
+				$.get("http://47.104.244.134:8080/cartlist.do",{token:taken},function(data){
+					var str =""
+					var index = data.length
+					$.each(data,function(i){
+						if(data[i].goods.picurl == ""){
+                        data[i].goods.picurl = "img/replace/"+Math.floor(Math.random()*10)+".jpg";
+                    }
+						str+=` <li><a href="cart.html">
+						<div><img src="${data[i].goods.picurl}"></div>
+						<div><p>${data[i].goods.name}</p><span>${data[i].count}</span></div>
+						<div><p>￥${(data[i].goods.price/100*data[i].count).toFixed(2)}</p></div>
+						</a>
+					</li>`
+					})
+					$("#listitem").html(str)
+					$("#indexx").html(index);
+})
 	
 }
 })
@@ -351,6 +306,9 @@ if(taken == undefined){
 	console.log(data)
 	var index = data.length
 	$.each(data,function(i){
+		if(data[i].goods.picurl == ""){
+                        data[i].goods.picurl = "img/replace/"+Math.floor(Math.random()*10)+".jpg";
+                    }
 		str+=` <li><a href="cart.html">
 		<div><img src="${data[i].goods.picurl}"></div>
 		<div><p>${data[i].goods.name}</p><span>${data[i].count}</span></div>
@@ -389,45 +347,6 @@ $("#top").click(function(){
     $("body,html").animate({scrollTop:"0px"},200);
 });
 
-
-//用户验证&记住用户名
-// $("#login_").click(function(){
-// 	var user =  $("#usen").val();
-// 	var pad  =  $("#mim").val();
-// 	var strr = "";
-// 	var str ="";
-// 	var ff = "";
-// 	var ssd =""
-// 	  $.post("http://47.104.244.134:8080/userlogin.do",{ "name":user,"password":pad},function(data){
-// 		var taken = data.data.token
-// 		data = data.code;
-// 		console.log("aa")
-// 		  if(data == 1){
-// 			$(".error").show();
-// 		}else{
-// 			$("#zhzhao").hide();
-//             Setcookie("username",user)
-// 			Setcookie("pasd",pad)
-// 			console.log(user,pad)
-// 			Setcookie("token",taken)
-// 			ssd+=`你好 <a href='#'> ${user}</a>`
-// 			$(".ning").html(ssd)
-// 			str+=`<span class="iconfont icon-renwu"></span><p><a id="loginn1" href="#">用户  ${user}</a></p>`
-// 					$(".touxiang").html(str);
-// 				strr+=`<a href="#" id ="name">欢迎 ${user}</a>`
-// 					$(".idid").html(strr)
-// 					ff+=`<a href="#">注销</a>`
-// 					$(".logout").html(ff);
-// 					$(".logout").click(function(){RemoveCookie("username");window.location.href="index.html"})
-// 		}
-// 	  })
-// 	  if($("#chx").prop("checked")==true){
-// 		  Setcookie("username",user,7)
-// 	  }
-// 	  if($("#chx").prop("checked")==false){
-// 		  RemoveCookie("username")
-// 	  }
-// 	  })
 	  //取值
 	  $("#username").val(Getcookie("username")) 
 	  function denglu(){

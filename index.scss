@@ -1650,7 +1650,8 @@ footer{
     overflow: hidden;
     ul{
         max-height: 590px;
-        overflow: hidden;
+        overflow-y: auto;
+        width: 320px;
     }
     li{
         height: 90px;

@@ -296,6 +296,9 @@ $("#login_").click(function(){
                     console.log(data)
                     var index = data.length
                     $.each(data,function(i){
+                    	if(data[i].goods.picurl == ""){
+                        data[i].goods.picurl = "img/replace/"+Math.floor(Math.random()*10)+".jpg";
+                    }
                         str+=` <li><a href="cart.html">
                         <div><img src="${data[i].goods.picurl}"></div>
                         <div><p>${data[i].goods.name}</p><span>${data[i].count}</span></div>

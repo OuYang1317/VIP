@@ -28,7 +28,7 @@ $(function(){
             var str = "";
             var taken = Getcookie("token")
             if(taken == undefined){
-            str+=`<li id = "goto"><a herf="index.html">点我  Let's 购 !!! </a></li>`
+            str+=`<li id = "goto"><a href="index.html">点我  Let's 购 !!! </a></li>`
             $("#cart_item").html(str)
             }else{
                 $.get("http://47.104.244.134:8080/cartlist.do",{token:taken},Cart)
@@ -40,6 +40,9 @@ $(function(){
                     return
                 }
                 $.each(data,function(i){
+                	 if(data[i].goods.picurl == ""){
+                        data[i].goods.picurl = "img/replace/"+Math.floor(Math.random()*10)+".jpg";
+                    }
                     str+=` <li goods-id="${data[i].goods.id}">
                     <div><img src="${data[i].goods.picurl}"/><p>${data[i].goods.name}</p></div>
                     <div class = "price">￥${data[i].goods.price/100}</div>
@@ -67,6 +70,7 @@ $(function(){
                         $(".message_").find("b").text("￥"+sum.toFixed(2))
                         $(".moke").text("￥"+sum.toFixed(2))
                         $("#li").text(ber)
+                        location.reload()
                 })
                 $(".down").click(function(){
                     var a = -1;
@@ -104,7 +108,6 @@ $(function(){
                     $(".moke").text("￥"+sum.toFixed(2))
 
                 })
-                console.log( $(".cartt").find("input"))
                 $(".cartt").find("input").focus(function(){
                     console.log("aa")
                     var bn = $(this).val()
@@ -155,7 +158,7 @@ $(function(){
             //形象改变
             function alter(id,goid,num,taken){
                 $.get("http://47.104.244.134:8080/cartupdate.do",{id:id,gid:goid,num:num,token:taken},function(data){})
-                location.reload()
+                
             }
 
 
